@@ -3,21 +3,21 @@ using System;
 
 public class UI : Control
 {
-    private Label _label = null;
+    private Label _healthLabel = null;
     public override void _Ready()
     {
-        _label = GetNode<Label>("Label");
-        _label.Text = Player.Instance.Health.ToString();
-        Player.Instance.PlayerDamaged += OnPlayerDamaged;
+        _healthLabel = GetNode<Label>("Health");
+        _healthLabel.Text = Player.Instance.Health.ToString();
+        Player.Instance.Damaged += OnPlayerDamaged;
     }
 
     private void OnPlayerDamaged(object sender, EventArgs e)
     {
         int health = (int)Player.Instance.Health;
-        _label.Text = health.ToString();
+        _healthLabel.Text = health.ToString();
         if (health == 0)
         {
-            _label.AddColorOverride("font_color", Color.ColorN("red"));
+            _healthLabel.AddColorOverride("font_color", Color.ColorN("red"));
         }
     }
 }

@@ -90,14 +90,13 @@ shape = SubResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="Level/Player"]
 current = true
-zoom = Vector2( 5, 5 )
 
 [node name="UI" type="Control" parent="Level/Player/Camera2D"]
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 8 )
 
-[node name="Label" type="Label" parent="Level/Player/Camera2D/UI"]
+[node name="Health" type="Label" parent="Level/Player/Camera2D/UI"]
 margin_left = -461.0
 margin_top = -260.0
 margin_right = -379.0

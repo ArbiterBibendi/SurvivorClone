@@ -2,14 +2,14 @@ using Godot;
 using System;
 using System.Threading.Tasks;
 
-public class SlimeEnemy : KinematicBody2D
+public class SlimeEnemy : Character
 {
     private float _damage = 25f;
     private bool _canDamagePlayer = true;
 
     private Vector2 _velocity = Vector2.Zero;
-    private float _jumpForce = 500f;
-    private int _jumpInterval = 3000; // milliseconds
+    private readonly float _jumpForce = 500f;
+    private readonly int _jumpInterval = 3000; // milliseconds
     private bool _canJump = true;
 
     private Player _player = null;

@@ -1,35 +1,15 @@
 using Godot;
 using System;
 
-public class Player : KinematicBody2D
+public class Player : Character
 {
     public static Player Instance;
-    public event EventHandler PlayerDamaged;
-    public float Health
-    {
-        get => _health;
-    }
-
-    private float _health = 100f;
-    private float MAX_HEALTH = 100f;
-    private float MIN_HEALTH = 0f;
-    private bool _canBeDamaged = true;
-
-    private float _speed = 175f;
-    private Vector2 _velocity = Vector2.Zero;
-    private float ACCELERATION_RATE = 0.5f;
-
-    private string _facingDirection = "up";
 
     private AnimatedSprite _animatedSprite = null;
-
-    private AudioStreamPlayer _audioStreamPlayer = null;
-    [Export]
-    public AudioStreamMP3 DeathSound;
-    [Export]
-    public AudioStreamMP3 HitSound;
-    [Export]
-    public AudioStreamMP3 AttackSound;
+    private Vector2 _velocity = Vector2.Zero;
+    private float _speed = 175f;
+    private float ACCELERATION_RATE = 0.5f;
+    private string _facingDirection = "up";
 
     public Player()
     {
@@ -37,42 +17,28 @@ public class Player : KinematicBody2D
     }
     public override void _Ready()
     {
+        base._Ready();
         _animatedSprite = GetNode<AnimatedSprite>("AnimatedSprite");
-        _audioStreamPlayer = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
     }
     public override void _PhysicsProcess(float delta)
     {
+        base._PhysicsProcess(delta);
         HandleMovement(delta);
         FaceMovement();
         HandleSprite();
     }
-    public void Damage(float value)
+    public override void Damage(float value)
     {
-        if (!_canBeDamaged)
-        {
-            return;
-        }
-        _health = Mathf.Clamp(_health - value, MIN_HEALTH, MAX_HEALTH);
-        PlayerDamaged.Invoke(this, EventArgs.Empty);
-        _audioStreamPlayer.Stream = HitSound;
-        _audioStreamPlayer.Playing = true;
-        if (_health == MIN_HEALTH)
-        {
-            Die();
-        }
+        base.Damage(value);
     }
-    private void Die()
+    protected override void Die()
     {
+        base.Die();
         GD.Print("Dead");
-        _canBeDamaged = false;
-        _audioStreamPlayer.Stream = DeathSound;
-        _audioStreamPlayer.Playing = true;
     }
-
     private void HandleMovement(float delta)
     {
         Vector2 input = Input.GetVector("left", "right", "up", "down");
-
         Vector2 targetVelocity = input * _speed;
         _velocity = _velocity.LinearInterpolate(targetVelocity, ACCELERATION_RATE);
         MoveAndSlide(_velocity);
