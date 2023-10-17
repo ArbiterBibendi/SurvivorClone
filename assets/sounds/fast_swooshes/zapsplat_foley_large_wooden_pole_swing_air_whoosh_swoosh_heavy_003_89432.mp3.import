@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_foley_large_wooden_pole_swing_air_whoosh_swoosh_heavy_003_89432.mp3-959e8be93ec1b121dae09f7a9a56eb59.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/fast_swooshes/zapsplat_foley_large_wooden_pole_swing_air_whoosh_swoosh_heavy_003_89432.mp3"
+dest_files=[ "res://.import/zapsplat_foley_large_wooden_pole_swing_air_whoosh_swoosh_heavy_003_89432.mp3-959e8be93ec1b121dae09f7a9a56eb59.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

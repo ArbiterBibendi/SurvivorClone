@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_magic_wand_zap_spark_power_001_12551.mp3-71c33be8220191eafa42f6b438f504b2.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/magic/zapsplat_magic_wand_zap_spark_power_001_12551.mp3"
+dest_files=[ "res://.import/zapsplat_magic_wand_zap_spark_power_001_12551.mp3-71c33be8220191eafa42f6b438f504b2.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

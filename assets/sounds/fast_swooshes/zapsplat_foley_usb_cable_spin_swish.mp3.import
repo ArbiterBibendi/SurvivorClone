@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_foley_usb_cable_spin_swish.mp3-a3691e5f6a31772dd5f9d7f28b13c469.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/fast_swooshes/zapsplat_foley_usb_cable_spin_swish.mp3"
+dest_files=[ "res://.import/zapsplat_foley_usb_cable_spin_swish.mp3-a3691e5f6a31772dd5f9d7f28b13c469.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

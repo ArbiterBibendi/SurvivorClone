@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_multimedia_game_retro_musical_positive.mp3-2b3a9d2a7e393f66a2a9d3ba16a8b605.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/musical/zapsplat_multimedia_game_retro_musical_positive.mp3"
+dest_files=[ "res://.import/zapsplat_multimedia_game_retro_musical_positive.mp3-2b3a9d2a7e393f66a2a9d3ba16a8b605.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

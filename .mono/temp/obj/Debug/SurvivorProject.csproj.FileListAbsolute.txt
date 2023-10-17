@@ -1,0 +1,9 @@
+C:\Users\lazer\Documents\SurvivorProject\.mono\temp\bin\Debug\SurvivorProject.dll
+C:\Users\lazer\Documents\SurvivorProject\.mono\temp\bin\Debug\SurvivorProject.pdb
+C:\Users\lazer\Documents\SurvivorProject\.mono\temp\obj\Debug\SurvivorProject.csproj.AssemblyReference.cache
+C:\Users\lazer\Documents\SurvivorProject\.mono\temp\obj\Debug\SurvivorProject.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lazer\Documents\SurvivorProject\.mono\temp\obj\Debug\SurvivorProject.AssemblyInfoInputs.cache
+C:\Users\lazer\Documents\SurvivorProject\.mono\temp\obj\Debug\SurvivorProject.AssemblyInfo.cs
+C:\Users\lazer\Documents\SurvivorProject\.mono\temp\obj\Debug\SurvivorProject.csproj.CoreCompileInputs.cache
+C:\Users\lazer\Documents\SurvivorProject\.mono\temp\obj\Debug\SurvivorProject.dll
+C:\Users\lazer\Documents\SurvivorProject\.mono\temp\obj\Debug\SurvivorProject.pdb

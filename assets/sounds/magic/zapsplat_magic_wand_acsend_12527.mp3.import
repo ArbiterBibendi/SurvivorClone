@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_magic_wand_acsend_12527.mp3-9ffa2f558b7bdd8a29fed2d878d04dba.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/magic/zapsplat_magic_wand_acsend_12527.mp3"
+dest_files=[ "res://.import/zapsplat_magic_wand_acsend_12527.mp3-9ffa2f558b7bdd8a29fed2d878d04dba.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

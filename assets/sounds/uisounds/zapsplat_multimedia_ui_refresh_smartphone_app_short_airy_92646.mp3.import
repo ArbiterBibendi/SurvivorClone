@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_multimedia_ui_refresh_smartphone_app_short_airy_92646.mp3-699f2bc38dcafd037f9253e9c3db7aa5.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/uisounds/zapsplat_multimedia_ui_refresh_smartphone_app_short_airy_92646.mp3"
+dest_files=[ "res://.import/zapsplat_multimedia_ui_refresh_smartphone_app_short_airy_92646.mp3-699f2bc38dcafd037f9253e9c3db7aa5.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

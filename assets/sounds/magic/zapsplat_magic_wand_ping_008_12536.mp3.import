@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_magic_wand_ping_008_12536.mp3-e8b7f0bcdf03d7be363bdaed83f39620.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/magic/zapsplat_magic_wand_ping_008_12536.mp3"
+dest_files=[ "res://.import/zapsplat_magic_wand_ping_008_12536.mp3-e8b7f0bcdf03d7be363bdaed83f39620.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

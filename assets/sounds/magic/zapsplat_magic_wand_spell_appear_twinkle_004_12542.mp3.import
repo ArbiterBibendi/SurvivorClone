@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_magic_wand_spell_appear_twinkle_004_12542.mp3-3d0b1d70ba2b17ffc158b86f887564e6.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/magic/zapsplat_magic_wand_spell_appear_twinkle_004_12542.mp3"
+dest_files=[ "res://.import/zapsplat_magic_wand_spell_appear_twinkle_004_12542.mp3-3d0b1d70ba2b17ffc158b86f887564e6.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

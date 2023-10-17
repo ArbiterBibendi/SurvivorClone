@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_warfare_arrow_whoosh_impact_dirt_023_90159.mp3-0d3b2ecfb3562a536b868382ae10ba72.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/impacts/zapsplat_warfare_arrow_whoosh_impact_dirt_023_90159.mp3"
+dest_files=[ "res://.import/zapsplat_warfare_arrow_whoosh_impact_dirt_023_90159.mp3-0d3b2ecfb3562a536b868382ae10ba72.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_warfare_arrow_whoosh_hit_water_splash_006_90119.mp3-188dba9af70a8d0cf9718e16bcc9f038.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/impacts/zapsplat_warfare_arrow_whoosh_hit_water_splash_006_90119.mp3"
+dest_files=[ "res://.import/zapsplat_warfare_arrow_whoosh_hit_water_splash_006_90119.mp3-188dba9af70a8d0cf9718e16bcc9f038.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

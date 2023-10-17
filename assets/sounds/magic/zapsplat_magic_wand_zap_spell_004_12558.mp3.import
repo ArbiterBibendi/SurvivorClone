@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_magic_wand_zap_spell_004_12558.mp3-4eb7aa099f62da2a5b61e24ef30f8779.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/magic/zapsplat_magic_wand_zap_spell_004_12558.mp3"
+dest_files=[ "res://.import/zapsplat_magic_wand_zap_spell_004_12558.mp3-4eb7aa099f62da2a5b61e24ef30f8779.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

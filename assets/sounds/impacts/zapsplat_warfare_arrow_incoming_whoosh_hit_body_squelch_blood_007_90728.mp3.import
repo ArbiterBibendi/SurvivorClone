@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_warfare_arrow_incoming_whoosh_hit_body_squelch_blood_007_90728.mp3-048cf60151f460a0b64800d9ceefad25.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/impacts/zapsplat_warfare_arrow_incoming_whoosh_hit_body_squelch_blood_007_90728.mp3"
+dest_files=[ "res://.import/zapsplat_warfare_arrow_incoming_whoosh_hit_body_squelch_blood_007_90728.mp3-048cf60151f460a0b64800d9ceefad25.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

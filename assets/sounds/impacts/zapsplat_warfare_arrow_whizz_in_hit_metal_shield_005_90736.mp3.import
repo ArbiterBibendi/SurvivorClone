@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_warfare_arrow_whizz_in_hit_metal_shield_005_90736.mp3-1c4176516b7075bcb1103b4548ad317a.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/impacts/zapsplat_warfare_arrow_whizz_in_hit_metal_shield_005_90736.mp3"
+dest_files=[ "res://.import/zapsplat_warfare_arrow_whizz_in_hit_metal_shield_005_90736.mp3-1c4176516b7075bcb1103b4548ad317a.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

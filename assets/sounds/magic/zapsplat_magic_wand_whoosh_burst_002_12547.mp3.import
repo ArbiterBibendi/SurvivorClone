@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_magic_wand_whoosh_burst_002_12547.mp3-4277c43ccd3a756e27e4b56602047ed7.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/magic/zapsplat_magic_wand_whoosh_burst_002_12547.mp3"
+dest_files=[ "res://.import/zapsplat_magic_wand_whoosh_burst_002_12547.mp3-4277c43ccd3a756e27e4b56602047ed7.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

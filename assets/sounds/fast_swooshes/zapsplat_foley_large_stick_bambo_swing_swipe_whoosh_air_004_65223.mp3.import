@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_foley_large_stick_bambo_swing_swipe_whoosh_air_004_65223.mp3-cf9f5451e2f47fd895fd4f451a291142.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/fast_swooshes/zapsplat_foley_large_stick_bambo_swing_swipe_whoosh_air_004_65223.mp3"
+dest_files=[ "res://.import/zapsplat_foley_large_stick_bambo_swing_swipe_whoosh_air_004_65223.mp3-cf9f5451e2f47fd895fd4f451a291142.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

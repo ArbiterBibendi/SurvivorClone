@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_foley_stick_snooker_cue_swing_air_whoosh_001_26787.mp3-39363304f8edeb0d1e3705a8445888b3.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/fast_swooshes/zapsplat_foley_stick_snooker_cue_swing_air_whoosh_001_26787.mp3"
+dest_files=[ "res://.import/zapsplat_foley_stick_snooker_cue_swing_air_whoosh_001_26787.mp3-39363304f8edeb0d1e3705a8445888b3.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

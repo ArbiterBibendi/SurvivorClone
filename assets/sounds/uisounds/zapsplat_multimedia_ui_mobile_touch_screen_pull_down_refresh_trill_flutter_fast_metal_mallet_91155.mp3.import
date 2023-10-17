@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_multimedia_ui_mobile_touch_screen_pull_down_refresh_trill_flutter_fast_metal_mallet_91155.mp3-c02b31bf7cc6e17bc9083ba583dc4240.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/uisounds/zapsplat_multimedia_ui_mobile_touch_screen_pull_down_refresh_trill_flutter_fast_metal_mallet_91155.mp3"
+dest_files=[ "res://.import/zapsplat_multimedia_ui_mobile_touch_screen_pull_down_refresh_trill_flutter_fast_metal_mallet_91155.mp3-c02b31bf7cc6e17bc9083ba583dc4240.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

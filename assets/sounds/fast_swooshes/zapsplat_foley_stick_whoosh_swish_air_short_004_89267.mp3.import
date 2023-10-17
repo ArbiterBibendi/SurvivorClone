@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_foley_stick_whoosh_swish_air_short_004_89267.mp3-b0885ada8259f7ce1dbe7f77a4370299.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/fast_swooshes/zapsplat_foley_stick_whoosh_swish_air_short_004_89267.mp3"
+dest_files=[ "res://.import/zapsplat_foley_stick_whoosh_swish_air_short_004_89267.mp3-b0885ada8259f7ce1dbe7f77a4370299.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

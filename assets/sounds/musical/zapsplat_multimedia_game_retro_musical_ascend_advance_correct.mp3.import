@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_multimedia_game_retro_musical_ascend_advance_correct.mp3-2f7e9114ef15e612d7cdbc94e472d7b1.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/musical/zapsplat_multimedia_game_retro_musical_ascend_advance_correct.mp3"
+dest_files=[ "res://.import/zapsplat_multimedia_game_retro_musical_ascend_advance_correct.mp3-2f7e9114ef15e612d7cdbc94e472d7b1.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
