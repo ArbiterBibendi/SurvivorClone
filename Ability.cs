@@ -12,6 +12,7 @@ public class Ability : Node2D
     protected int Cooldown = 2000;
 
     private AnimationPlayer _animationPlayer;
+    private bool _ableToDamage = false;
     private bool _enabled = false;
 
     public async void Enable()
@@ -31,6 +32,7 @@ public class Ability : Node2D
     public override void _Ready()
     {
         base._Ready();
+        Connect("child_entered_tree", this, nameof(OnChildEnteredTree));
 
         Player player = GetParentOrNull<Player>();
         if (player != Player.Instance)
@@ -48,28 +50,41 @@ public class Ability : Node2D
             AttackTime = (int)(_animationPlayer.GetAnimation("Attack").Length * 1000);
         }
 
-        Areas = new List<Area2D>();
-        foreach (var item in GetChildren())
-        {
-            if (item is Area2D area)
-            {
-                Areas.Add(area);
-                area.Connect("area_entered", this, nameof(OnAreaEntered));
-            }
-        }
-        
+        SetupAreaChildren();
         StopAttack();
         Enable();
     }
+
+    protected void SetupAreaChildren()
+    {
+        Areas = new List<Area2D>();
+        foreach (var child in GetChildren())
+        {
+            if (!(child is Area2D area))
+            {
+                return;
+            }
+
+            if (!Areas.Contains(area))
+            {
+                Areas.Add(area);
+            }
+            if (!area.IsConnected("area_entered", this, nameof(OnAreaEntered)))
+            {
+                area.Connect("area_entered", this, nameof(OnAreaEntered));
+            }
+        }
+    }
+
     protected async virtual void StartAttack()
     {
         if (Directional)
         {
-            LookAt(GlobalTransform.origin + Player.Instance.FacingDirection);   
+            LookAt(GlobalTransform.origin + Player.Instance.FacingDirection);
         }
 
         Visible = true;
-        _enabled = true;
+        _ableToDamage = true;
         _animationPlayer?.Play("Attack");
         await Task.Delay(AttackTime);
         StopAttack();
@@ -77,18 +92,22 @@ public class Ability : Node2D
     protected virtual void StopAttack()
     {
         Visible = false;
-        _enabled = false;
+        _ableToDamage = false;
     }
     private void OnAreaEntered(Area2D area)
     {
         if (
             !(area is Character character)
             || character == Player.Instance
-            || _enabled == false
+            || _ableToDamage == false
         )
         {
             return;
         }
         character.Damage(Damage);
+    }
+    protected void OnChildEnteredTree(Node child)
+    {
+        SetupAreaChildren();
     }
 }
