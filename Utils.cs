@@ -40,8 +40,4 @@ public static class Utils
         node.GetParent().RemoveChild(node);
         tree.Root.AddChild(node);
     }
-    public static void OnAudioStreamPlayerFinished()
-    {
-        
-    }
 }
