@@ -21,8 +21,8 @@ public class Ability : Node2D
         await Task.Delay(InitialWaitTime);
         while (_enabled)
         {
-            await Task.Delay(Cooldown);
             StartAttack();
+            await Task.Delay(Cooldown);
         }
     }
     public void Disable()

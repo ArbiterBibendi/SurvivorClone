@@ -1,0 +1,159 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://assets/sounds/uisounds/zapsplat_multimedia_ui_refresh_smartphone_app_percussive_delayed_005_92644.mp3" type="AudioStream" id=2]
+[ext_resource path="res://assets/adept necromancer/AdeptNecromancerIdle.png" type="Texture" id=3]
+[ext_resource path="res://assets/sounds/musical/zapsplat_multimedia_game_retro_musical_descend_fail_negative.mp3" type="AudioStream" id=4]
+[ext_resource path="res://assets/sounds/magic/zapsplat_magic_wand_whoosh_burst_001_12546.mp3" type="AudioStream" id=5]
+[ext_resource path="res://assets/spike_4.png" type="Texture" id=6]
+[ext_resource path="res://Theme.tres" type="Theme" id=7]
+[ext_resource path="res://Player.cs" type="Script" id=8]
+[ext_resource path="res://Candle.tscn" type="PackedScene" id=9]
+[ext_resource path="res://UI.cs" type="Script" id=10]
+[ext_resource path="res://Daggers.cs" type="Script" id=11]
+[ext_resource path="res://Candles.cs" type="Script" id=12]
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 48, 0, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 25.4375, 31 )
+
+[sub_resource type="CapsuleShape2D" id=9]
+radius = 19.0
+height = 44.0
+
+[sub_resource type="Animation" id=10]
+resource_name = "Attack"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 500, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+
+[sub_resource type="Animation" id=11]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[node name="Player" type="Area2D"]
+position = Vector2( 510, 302 )
+script = ExtResource( 8 )
+DeathSound = ExtResource( 4 )
+HitSound = ExtResource( 2 )
+AttackSound = ExtResource( 5 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 3.31925, 3.77355 )
+frames = SubResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 2, 1 )
+shape = SubResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
+[node name="UI" type="Control" parent="Camera2D"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 10 )
+
+[node name="Health" type="Label" parent="Camera2D/UI"]
+margin_left = -461.0
+margin_top = -260.0
+margin_right = -379.0
+margin_bottom = -246.0
+rect_scale = Vector2( 2, 2 )
+theme = ExtResource( 7 )
+text = "Health_Label"
+
+[node name="Daggers" type="Node2D" parent="."]
+script = ExtResource( 11 )
+
+[node name="Area2D" type="Area2D" parent="Daggers"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Daggers/Area2D"]
+rotation = 1.57747
+shape = SubResource( 9 )
+
+[node name="Sprite" type="Sprite" parent="Daggers/Area2D"]
+position = Vector2( 1, -2 )
+rotation = 1.57747
+scale = Vector2( 2.56829, 4.72481 )
+texture = ExtResource( 6 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Daggers"]
+root_node = NodePath("../Area2D")
+anims/Attack = SubResource( 10 )
+anims/RESET = SubResource( 11 )
+
+[node name="Candles" type="Node2D" parent="."]
+rotation = 6.28319
+script = ExtResource( 12 )
+CandleScene = ExtResource( 9 )

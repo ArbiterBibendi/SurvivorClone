@@ -10,13 +10,14 @@ public class Candles : Ability
     public PackedScene CandleScene = null;
     private int _numberOfCandles = 4;
     private float _distance = 100;
-    private float _rotationSpeed = 0f;//0.01f;
+    private float _rotationSpeed = 0.06f;
     public Candles()
     {
         Damage = 13f;
         InitialWaitTime = 300;
-        AttackTime = 2000;
         Directional = false;
+        Cooldown = 5000;
+        AttackTime = 3000;
     }
     public void SetCandles(int numberOfCandles)
     {
