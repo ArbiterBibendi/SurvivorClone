@@ -25,6 +25,12 @@ public class Character : Area2D
     {
         base._Ready();
         _audioStreamPlayer = GetNodeOrNull<AudioStreamPlayer>("AudioStreamPlayer");
+        if (_audioStreamPlayer == null)
+        {
+            PackedScene scene = ResourceLoader.Load<PackedScene>("DefaultAudioStreamPlayer.tscn");
+            _audioStreamPlayer = scene.Instance<AudioStreamPlayer>();
+            AddChild(_audioStreamPlayer);
+        }
         Connect("area_entered", this, nameof(OnAreaEntered));
     }
     protected virtual void OnAreaEntered(Area2D area)
@@ -54,10 +60,11 @@ public class Character : Area2D
 
     private void PlayAudioStream(AudioStream stream)
     {
+
         if (_audioStreamPlayer != null && stream != null)
         {
             _audioStreamPlayer.Stream = stream;
-            _audioStreamPlayer.Playing = true;
+            _audioStreamPlayer.Play(0);
         }
     }
     protected void Move(Vector2 velocity, float delta)
@@ -70,13 +77,12 @@ public class Character : Area2D
 
 public class DamagedEventArgs : EventArgs
 {
-    public float HealthBefore {get;}
-    public float HealthAfter {get;}
-    public float Damage {get;}
+    public float HealthBefore { get; }
+    public float HealthAfter { get; }
+    public float Damage { get; }
     public DamagedEventArgs(float healthBeforeDamage, float healthAfterDamage, float damageValue)
     {
         HealthBefore = healthBeforeDamage;
-        GD.Print(healthAfterDamage);
         HealthAfter = healthAfterDamage;
         Damage = damageValue;
     }

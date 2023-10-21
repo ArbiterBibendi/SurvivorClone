@@ -35,7 +35,7 @@ public class SlimeEnemy : Character
     }
     protected override void Die()
     {
-        QueueFree();
+        Utils.QueueFree(this);
     }
     
     protected override void OnAreaEntered(Area2D area)
