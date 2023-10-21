@@ -41,7 +41,7 @@ public class Player : Character
         Vector2 input = Input.GetVector("left", "right", "up", "down");
         Vector2 targetVelocity = input * _speed;
         _velocity = _velocity.LinearInterpolate(targetVelocity, ACCELERATION_RATE);
-        MoveAndSlide(_velocity);
+        Move(_velocity, delta);
     }
     private void FaceMovement()
     {

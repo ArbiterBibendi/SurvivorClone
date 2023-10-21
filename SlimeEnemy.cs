@@ -17,6 +17,7 @@ public class SlimeEnemy : Character
 
     public override void _Ready()
     {
+        base._Ready();
         _player = Player.Instance;
         if (_player == null)
         {
@@ -27,17 +28,15 @@ public class SlimeEnemy : Character
     public override void _PhysicsProcess(float delta)
     {
         base._PhysicsProcess(delta);
-        HandleMovement();
-        KinematicCollision2D collision = GetLastSlideCollision();
-        bool collidedWithPlayer = CollidedWithPlayer(collision);
-        if (collidedWithPlayer == true && _canDamagePlayer)
+        HandleMovement(delta);
+    }
+    
+    protected override void OnAreaEntered(Area2D area)
+    {
+        if (area == Player.Instance && _canDamagePlayer)
         {
             DamagePlayer();
         }
-    }
-    private bool CollidedWithPlayer(KinematicCollision2D collision)
-    {
-        return collision?.ColliderId == _playerID;
     }
     private async void DamagePlayer()
     {
@@ -46,14 +45,14 @@ public class SlimeEnemy : Character
         await Task.Delay(1000);
         _canDamagePlayer = true;
     }
-    private void HandleMovement()
+    private void HandleMovement(float delta)
     {
         if (_canJump)
         {
             Jump();
         }
         _velocity = _velocity.LinearInterpolate(Vector2.Zero, 0.05f);
-        MoveAndSlide(_velocity);
+        Move(_velocity, delta);
     }
     private async void Jump()
     {

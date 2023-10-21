@@ -11,9 +11,9 @@ public class UI : Control
         Player.Instance.Damaged += OnPlayerDamaged;
     }
 
-    private void OnPlayerDamaged(object sender, EventArgs e)
+    private void OnPlayerDamaged(object sender, DamagedEventArgs e)
     {
-        int health = (int)Player.Instance.Health;
+        int health = (int)e.HealthAfter;
         _healthLabel.Text = health.ToString();
         if (health == 0)
         {
