@@ -9,7 +9,8 @@ public class Player : Character
     private Vector2 _velocity = Vector2.Zero;
     private float _speed = 175f;
     private float ACCELERATION_RATE = 0.5f;
-    private string _facingDirection = "up";
+    private string _facingDirectionString = "up";
+    public Vector2 FacingDirection {get; private set;} = Vector2.Up;
 
     public Player()
     {
@@ -39,6 +40,10 @@ public class Player : Character
     private void HandleMovement(float delta)
     {
         Vector2 input = Input.GetVector("left", "right", "up", "down");
+        if (!input.Equals(Vector2.Zero))
+        {
+            FacingDirection = input.Normalized();
+        }
         Vector2 targetVelocity = input * _speed;
         _velocity = _velocity.LinearInterpolate(targetVelocity, ACCELERATION_RATE);
         Move(_velocity, delta);
@@ -47,29 +52,29 @@ public class Player : Character
     {
         if (Input.IsActionJustPressed("up"))
         {
-            _facingDirection = "up";
+            _facingDirectionString = "up";
         }
         else if (Input.IsActionJustPressed("down"))
         {
-            _facingDirection = "down";
+            _facingDirectionString = "down";
         }
         else if (Input.IsActionJustPressed("left"))
         {
-            _facingDirection = "left";
+            _facingDirectionString = "left";
         }
         else if (Input.IsActionJustPressed("right"))
         {
-            _facingDirection = "right";
+            _facingDirectionString = "right";
         }
     }
     private void HandleSprite()
     {
         _animatedSprite.Playing = !(_velocity.DistanceTo(Vector2.Zero) < 1f);
-        if (_facingDirection == "left")
+        if (_facingDirectionString == "left")
         {
             _animatedSprite.FlipH = true;
         }
-        else if (_facingDirection == "right")
+        else if (_facingDirectionString == "right")
         {
             _animatedSprite.FlipH = false;
         }

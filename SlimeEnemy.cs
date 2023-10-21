@@ -7,6 +7,8 @@ public class SlimeEnemy : Character
     private float _damage = 25f;
     private bool _canDamagePlayer = true;
 
+    private readonly float INITIAL_HEALTH = 25f;
+
     private Vector2 _velocity = Vector2.Zero;
     private readonly float _jumpForce = 500f;
     private readonly int _jumpInterval = 3000; // milliseconds
@@ -18,6 +20,7 @@ public class SlimeEnemy : Character
     public override void _Ready()
     {
         base._Ready();
+        _health = INITIAL_HEALTH;
         _player = Player.Instance;
         if (_player == null)
         {
@@ -29,6 +32,10 @@ public class SlimeEnemy : Character
     {
         base._PhysicsProcess(delta);
         HandleMovement(delta);
+    }
+    protected override void Die()
+    {
+        QueueFree();
     }
     
     protected override void OnAreaEntered(Area2D area)
