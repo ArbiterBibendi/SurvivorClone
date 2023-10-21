@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://assets/mainlevbuild.png" type="Texture" id=1]
 [ext_resource path="res://assets/adept necromancer/AdeptNecromancerIdle.png" type="Texture" id=2]
@@ -14,6 +14,8 @@
 [ext_resource path="res://assets/sounds/uisounds/zapsplat_multimedia_ui_refresh_smartphone_app_percussive_delayed_005_92644.mp3" type="AudioStream" id=12]
 [ext_resource path="res://assets/spike_4.png" type="Texture" id=13]
 [ext_resource path="res://Daggers.cs" type="Script" id=14]
+[ext_resource path="res://assets/candleA_01.png" type="Texture" id=15]
+[ext_resource path="res://Candles.cs" type="Script" id=16]
 
 [sub_resource type="TileSet" id=1]
 0/name = "mainlevbuild.png 0"
@@ -68,7 +70,6 @@ height = 44.0
 
 [sub_resource type="Animation" id=10]
 resource_name = "Attack"
-length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
@@ -76,10 +77,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 200, 0 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 500, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:rotation_degrees")
@@ -88,7 +89,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0.0, 360.0 ]
@@ -120,6 +121,9 @@ tracks/1/keys = {
 "update": 0,
 "values": [ 0.0 ]
 }
+
+[sub_resource type="CircleShape2D" id=12]
+radius = 15.0
 
 [sub_resource type="RectangleShape2D" id=3]
 
@@ -189,6 +193,20 @@ root_node = NodePath("../Area2D")
 anims/Attack = SubResource( 10 )
 anims/RESET = SubResource( 11 )
 
+[node name="Candles" type="Node2D" parent="Level/Player"]
+rotation = 6.28319
+script = ExtResource( 16 )
+
+[node name="Area2D" type="Area2D" parent="Level/Player/Candles"]
+position = Vector2( 82, 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Player/Candles/Area2D"]
+shape = SubResource( 12 )
+
+[node name="Sprite" type="Sprite" parent="Level/Player/Candles/Area2D"]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 15 )
+
 [node name="SlimeEnemy" type="Area2D" parent="Level"]
 position = Vector2( 302, 108 )
 script = ExtResource( 6 )
@@ -199,184 +217,4 @@ texture = ExtResource( 4 )
 hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/SlimeEnemy"]
-shape = SubResource( 3 )
-
-[node name="SlimeEnemy2" type="Area2D" parent="Level"]
-position = Vector2( 231, 186 )
-script = ExtResource( 6 )
-
-[node name="Sprite" type="Sprite" parent="Level/SlimeEnemy2"]
-scale = Vector2( 2, 2 )
-texture = ExtResource( 4 )
-hframes = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/SlimeEnemy2"]
-shape = SubResource( 3 )
-
-[node name="SlimeEnemy3" type="Area2D" parent="Level"]
-position = Vector2( 460, 116 )
-script = ExtResource( 6 )
-
-[node name="Sprite" type="Sprite" parent="Level/SlimeEnemy3"]
-scale = Vector2( 2, 2 )
-texture = ExtResource( 4 )
-hframes = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/SlimeEnemy3"]
-shape = SubResource( 3 )
-
-[node name="SlimeEnemy4" type="Area2D" parent="Level"]
-position = Vector2( 586, 61 )
-script = ExtResource( 6 )
-
-[node name="Sprite" type="Sprite" parent="Level/SlimeEnemy4"]
-scale = Vector2( 2, 2 )
-texture = ExtResource( 4 )
-hframes = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/SlimeEnemy4"]
-shape = SubResource( 3 )
-
-[node name="SlimeEnemy5" type="Area2D" parent="Level"]
-position = Vector2( 689, 90 )
-script = ExtResource( 6 )
-
-[node name="Sprite" type="Sprite" parent="Level/SlimeEnemy5"]
-scale = Vector2( 2, 2 )
-texture = ExtResource( 4 )
-hframes = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/SlimeEnemy5"]
-shape = SubResource( 3 )
-
-[node name="SlimeEnemy6" type="Area2D" parent="Level"]
-position = Vector2( 454, 8 )
-script = ExtResource( 6 )
-
-[node name="Sprite" type="Sprite" parent="Level/SlimeEnemy6"]
-scale = Vector2( 2, 2 )
-texture = ExtResource( 4 )
-hframes = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/SlimeEnemy6"]
-shape = SubResource( 3 )
-
-[node name="SlimeEnemy7" type="Area2D" parent="Level"]
-position = Vector2( 343, 22 )
-script = ExtResource( 6 )
-
-[node name="Sprite" type="Sprite" parent="Level/SlimeEnemy7"]
-scale = Vector2( 2, 2 )
-texture = ExtResource( 4 )
-hframes = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/SlimeEnemy7"]
-shape = SubResource( 3 )
-
-[node name="SlimeEnemy8" type="Area2D" parent="Level"]
-position = Vector2( 378, 82 )
-script = ExtResource( 6 )
-
-[node name="Sprite" type="Sprite" parent="Level/SlimeEnemy8"]
-scale = Vector2( 2, 2 )
-texture = ExtResource( 4 )
-hframes = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/SlimeEnemy8"]
-shape = SubResource( 3 )
-
-[node name="SlimeEnemy9" type="Area2D" parent="Level"]
-position = Vector2( 382, 147 )
-script = ExtResource( 6 )
-
-[node name="Sprite" type="Sprite" parent="Level/SlimeEnemy9"]
-scale = Vector2( 2, 2 )
-texture = ExtResource( 4 )
-hframes = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/SlimeEnemy9"]
-shape = SubResource( 3 )
-
-[node name="SlimeEnemy10" type="Area2D" parent="Level"]
-position = Vector2( 321, 235 )
-script = ExtResource( 6 )
-
-[node name="Sprite" type="Sprite" parent="Level/SlimeEnemy10"]
-scale = Vector2( 2, 2 )
-texture = ExtResource( 4 )
-hframes = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/SlimeEnemy10"]
-shape = SubResource( 3 )
-
-[node name="SlimeEnemy11" type="Area2D" parent="Level"]
-position = Vector2( 338, 316 )
-script = ExtResource( 6 )
-
-[node name="Sprite" type="Sprite" parent="Level/SlimeEnemy11"]
-scale = Vector2( 2, 2 )
-texture = ExtResource( 4 )
-hframes = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/SlimeEnemy11"]
-shape = SubResource( 3 )
-
-[node name="SlimeEnemy12" type="Area2D" parent="Level"]
-position = Vector2( 248, 374 )
-script = ExtResource( 6 )
-
-[node name="Sprite" type="Sprite" parent="Level/SlimeEnemy12"]
-scale = Vector2( 2, 2 )
-texture = ExtResource( 4 )
-hframes = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/SlimeEnemy12"]
-shape = SubResource( 3 )
-
-[node name="SlimeEnemy13" type="Area2D" parent="Level"]
-position = Vector2( 210, 289 )
-script = ExtResource( 6 )
-
-[node name="Sprite" type="Sprite" parent="Level/SlimeEnemy13"]
-scale = Vector2( 2, 2 )
-texture = ExtResource( 4 )
-hframes = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/SlimeEnemy13"]
-shape = SubResource( 3 )
-
-[node name="SlimeEnemy14" type="Area2D" parent="Level"]
-position = Vector2( 105, 201 )
-script = ExtResource( 6 )
-
-[node name="Sprite" type="Sprite" parent="Level/SlimeEnemy14"]
-scale = Vector2( 2, 2 )
-texture = ExtResource( 4 )
-hframes = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/SlimeEnemy14"]
-shape = SubResource( 3 )
-
-[node name="SlimeEnemy15" type="Area2D" parent="Level"]
-position = Vector2( 143, 127 )
-script = ExtResource( 6 )
-
-[node name="Sprite" type="Sprite" parent="Level/SlimeEnemy15"]
-scale = Vector2( 2, 2 )
-texture = ExtResource( 4 )
-hframes = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/SlimeEnemy15"]
-shape = SubResource( 3 )
-
-[node name="SlimeEnemy16" type="Area2D" parent="Level"]
-position = Vector2( 143, 127 )
-script = ExtResource( 6 )
-
-[node name="Sprite" type="Sprite" parent="Level/SlimeEnemy16"]
-scale = Vector2( 2, 2 )
-texture = ExtResource( 4 )
-hframes = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/SlimeEnemy16"]
 shape = SubResource( 3 )
