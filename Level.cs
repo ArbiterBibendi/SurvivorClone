@@ -1,13 +1,12 @@
 using Godot;
-using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 
 public class Level : Node2D
 {
     private Player _player = null;
     private Vector2 _playerCoords = Vector2.Zero;
     private TileMap _tileMap = null;
+    private Spawner _spawner;
     public override void _Ready()
     {
         base._Ready();
@@ -15,18 +14,21 @@ public class Level : Node2D
         _tileMap = GetNode<TileMap>("TileMap");
 
         _playerCoords = GetPlayerMapPosition(_player, _tileMap);
+        List<PackedScene> enemiesList = new List<PackedScene>(){ResourceLoader.Load<PackedScene>("SlimeEnemy.tscn")};
+        _spawner = new Spawner(this, enemiesList);
+        _spawner.Enable();
     }
     public override void _Process(float delta)
     {
         base._Process(delta);
         _playerCoords = GetPlayerMapPosition(_player, _tileMap);
-        setTilesAroundPlayer(32, 32, _playerCoords);
+        SetTilesAroundPlayer(32, 32, _playerCoords);
     }
     private Vector2 GetPlayerMapPosition(Player player, TileMap tileMap)
     {
         return tileMap.WorldToMap(ToLocal(player.GlobalTransform.origin));
     }
-    private void setTilesAroundPlayer(int distanceX, int distanceY, Vector2 playerCoords)
+    private void SetTilesAroundPlayer(int distanceX, int distanceY, Vector2 playerCoords)
     {
         int leftColumn = (int)playerCoords.x - distanceX;
         int rightColumn = (int)playerCoords.x + distanceX;
@@ -47,5 +49,4 @@ public class Level : Node2D
             }
         }
     }
-
 }
