@@ -50,28 +50,67 @@ tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 
 position = Vector2( 56, 233 )
 
 [node name="SlimeEnemy2" parent="Level/Slimes" instance=ExtResource( 2 )]
-position = Vector2( 84, 181 )
+position = Vector2( 103, 244 )
 
 [node name="SlimeEnemy3" parent="Level/Slimes" instance=ExtResource( 2 )]
-position = Vector2( 121, 133 )
+position = Vector2( 80, 281 )
 
 [node name="SlimeEnemy4" parent="Level/Slimes" instance=ExtResource( 2 )]
-position = Vector2( 214, 92 )
+position = Vector2( 56, 340 )
 
 [node name="SlimeEnemy5" parent="Level/Slimes" instance=ExtResource( 2 )]
-position = Vector2( 126, 149 )
+position = Vector2( 21, 297 )
 
 [node name="SlimeEnemy6" parent="Level/Slimes" instance=ExtResource( 2 )]
-position = Vector2( 143, 246 )
+position = Vector2( 42, 165 )
 
 [node name="SlimeEnemy7" parent="Level/Slimes" instance=ExtResource( 2 )]
-position = Vector2( 134, 189 )
+position = Vector2( 97, 171 )
 
 [node name="SlimeEnemy8" parent="Level/Slimes" instance=ExtResource( 2 )]
-position = Vector2( 187, 158 )
+position = Vector2( 150, 311 )
 
 [node name="SlimeEnemy9" parent="Level/Slimes" instance=ExtResource( 2 )]
-position = Vector2( 187, 199 )
+position = Vector2( 124, 351 )
 
 [node name="SlimeEnemy10" parent="Level/Slimes" instance=ExtResource( 2 )]
-position = Vector2( 187, 199 )
+position = Vector2( 89, 404 )
+
+[node name="SlimeEnemy11" parent="Level/Slimes" instance=ExtResource( 2 )]
+position = Vector2( 29, 400 )
+
+[node name="SlimeEnemy12" parent="Level/Slimes" instance=ExtResource( 2 )]
+position = Vector2( 40, 494 )
+
+[node name="SlimeEnemy13" parent="Level/Slimes" instance=ExtResource( 2 )]
+position = Vector2( 100, 495 )
+
+[node name="SlimeEnemy14" parent="Level/Slimes" instance=ExtResource( 2 )]
+position = Vector2( 158, 559 )
+
+[node name="SlimeEnemy15" parent="Level/Slimes" instance=ExtResource( 2 )]
+position = Vector2( 164, 468 )
+
+[node name="SlimeEnemy16" parent="Level/Slimes" instance=ExtResource( 2 )]
+position = Vector2( 72, 554 )
+
+[node name="SlimeEnemy17" parent="Level/Slimes" instance=ExtResource( 2 )]
+position = Vector2( 72, 111 )
+
+[node name="SlimeEnemy18" parent="Level/Slimes" instance=ExtResource( 2 )]
+position = Vector2( 124, 111 )
+
+[node name="SlimeEnemy19" parent="Level/Slimes" instance=ExtResource( 2 )]
+position = Vector2( 18, 71 )
+
+[node name="SlimeEnemy20" parent="Level/Slimes" instance=ExtResource( 2 )]
+position = Vector2( 153, 182 )
+
+[node name="SlimeEnemy21" parent="Level/Slimes" instance=ExtResource( 2 )]
+position = Vector2( 166, 240 )
+
+[node name="SlimeEnemy22" parent="Level/Slimes" instance=ExtResource( 2 )]
+position = Vector2( 176, 390 )
+
+[node name="SlimeEnemy23" parent="Level/Slimes" instance=ExtResource( 2 )]
+position = Vector2( 176, 390 )

@@ -1,6 +1,8 @@
 using Godot;
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 public class Character : Area2D
@@ -21,6 +23,7 @@ public class Character : Area2D
     protected float MIN_HEALTH = 0f;
     protected float MAX_HEALTH = 100f;
 
+    private readonly int _pushAwaySpeed = 50;
     private AudioStreamPlayer _audioStreamPlayer = null;
     private AnimatedSprite _animatedSprite = null;
     private AnimationPlayer _animationPlayer = null;
@@ -67,7 +70,6 @@ public class Character : Area2D
         }
     }
 
-
     private void PlayAudioStream(AudioStream stream)
     {
 
@@ -79,9 +81,20 @@ public class Character : Area2D
     }
     protected void Move(Vector2 velocity, float delta)
     {
-        Transform2D transform = GlobalTransform;
-        transform.origin += velocity * delta;
-        GlobalTransform = transform;
+        Godot.Collections.Array areas = GetOverlappingAreas();
+        if (areas.Count > 0)
+        {
+            foreach (Area2D area in areas)
+            {
+                if (!(area is Character character))
+                {
+                    continue;
+                }
+                Vector2 directionAway = (GlobalPosition - character.GlobalPosition).Normalized();
+                velocity += directionAway * _pushAwaySpeed;
+            }
+        }
+        GlobalPosition += velocity * delta;
     }
 }
 
