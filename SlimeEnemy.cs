@@ -13,6 +13,7 @@ public class SlimeEnemy : Character
     private readonly float _jumpForce = 500f;
     private readonly int _jumpInterval = 3000; // milliseconds
     private bool _canJump = true;
+    private bool _dead = false;
 
     private Player _player = null;
     private ulong _playerID = 0;
@@ -33,14 +34,17 @@ public class SlimeEnemy : Character
         base._PhysicsProcess(delta);
         HandleMovement(delta);
     }
-    protected override void Die()
+    protected async override void Die()
     {
+        CanTakeDamage = false;
+        _dead = true;
+        await Task.Delay(200);
         Utils.QueueFree(this);
     }
     
     protected override void OnAreaEntered(Area2D area)
     {
-        if (area == Player.Instance && _canDamagePlayer)
+        if (area == Player.Instance && _canDamagePlayer && !_dead)
         {
             DamagePlayer();
         }
@@ -54,7 +58,7 @@ public class SlimeEnemy : Character
     }
     private void HandleMovement(float delta)
     {
-        if (_canJump)
+        if (_canJump && !_dead)
         {
             Jump();
         }

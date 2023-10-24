@@ -1,5 +1,6 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=24 format=2]
 
+[ext_resource path="res://ShaderMaterial.tres" type="Material" id=1]
 [ext_resource path="res://assets/sounds/uisounds/zapsplat_multimedia_ui_refresh_smartphone_app_percussive_delayed_005_92644.mp3" type="AudioStream" id=2]
 [ext_resource path="res://assets/adept necromancer/AdeptNecromancerIdle.png" type="Texture" id=3]
 [ext_resource path="res://assets/sounds/musical/zapsplat_multimedia_game_retro_musical_descend_fail_negative.mp3" type="AudioStream" id=4]
@@ -12,29 +13,25 @@
 [ext_resource path="res://Daggers.cs" type="Script" id=11]
 [ext_resource path="res://Candles.cs" type="Script" id=12]
 
-[sub_resource type="AtlasTexture" id=4]
-flags = 4
+[sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=5]
-flags = 4
+[sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 3 )
 region = Rect2( 16, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=6]
-flags = 4
+[sub_resource type="AtlasTexture" id=15]
 atlas = ExtResource( 3 )
 region = Rect2( 32, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=7]
-flags = 4
+[sub_resource type="AtlasTexture" id=16]
 atlas = ExtResource( 3 )
 region = Rect2( 48, 0, 16, 16 )
 
 [sub_resource type="SpriteFrames" id=8]
 animations = [ {
-"frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
+"frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -101,6 +98,37 @@ tracks/1/keys = {
 "values": [ 0.0 ]
 }
 
+[sub_resource type="Animation" id=17]
+resource_name = "Damaged"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:material:shader_param/flash_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0, 0 ), Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=18]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:material:shader_param/flash_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ) ]
+}
+
 [node name="Player" type="Area2D"]
 position = Vector2( 510, 302 )
 script = ExtResource( 8 )
@@ -109,6 +137,7 @@ HitSound = ExtResource( 2 )
 AttackSound = ExtResource( 5 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+material = ExtResource( 1 )
 scale = Vector2( 3.31925, 3.77355 )
 frames = SubResource( 8 )
 
@@ -157,3 +186,7 @@ anims/RESET = SubResource( 11 )
 rotation = 6.28319
 script = ExtResource( 12 )
 CandleScene = ExtResource( 9 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Damaged = SubResource( 17 )
+anims/RESET = SubResource( 18 )

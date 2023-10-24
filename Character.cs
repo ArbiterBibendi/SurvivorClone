@@ -1,5 +1,7 @@
 using Godot;
 using System;
+using System.Collections;
+using System.Threading.Tasks;
 
 public class Character : Area2D
 {
@@ -20,6 +22,8 @@ public class Character : Area2D
     protected float MAX_HEALTH = 100f;
 
     private AudioStreamPlayer _audioStreamPlayer = null;
+    private AnimatedSprite _animatedSprite = null;
+    private AnimationPlayer _animationPlayer = null;
 
     public override void _Ready()
     {
@@ -31,8 +35,11 @@ public class Character : Area2D
             _audioStreamPlayer = scene.Instance<AudioStreamPlayer>();
             AddChild(_audioStreamPlayer);
         }
+        _animatedSprite = Utils.FindChildOfType<AnimatedSprite>(this);
+        _animationPlayer = GetNodeOrNull<AnimationPlayer>("AnimationPlayer");
         Connect("area_entered", this, nameof(OnAreaEntered));
     }
+
     protected virtual void OnAreaEntered(Area2D area)
     {
     }
@@ -52,11 +59,13 @@ public class Character : Area2D
         _health = Mathf.Clamp(_health - value, MIN_HEALTH, MAX_HEALTH);
         Damaged?.Invoke(this, new DamagedEventArgs(healthBeforeTakeDamage, _health, value));
         PlayAudioStream(HitSound);
+        _animationPlayer?.Play("Damaged");
         if (_health <= MIN_HEALTH)
         {
             Die();
         }
     }
+
 
     private void PlayAudioStream(AudioStream stream)
     {
