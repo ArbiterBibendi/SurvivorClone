@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_multimedia_ui_mobile_touch_screen_pull_down_refresh_trill_flutter_shaker_higher_pitched_91164.mp3-a22795928f96d0370bb4f6c5cf083de3.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/uisounds/zapsplat_multimedia_ui_mobile_touch_screen_pull_down_refresh_trill_flutter_shaker_higher_pitched_91164.mp3"
+dest_files=[ "res://.import/zapsplat_multimedia_ui_mobile_touch_screen_pull_down_refresh_trill_flutter_shaker_higher_pitched_91164.mp3-a22795928f96d0370bb4f6c5cf083de3.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

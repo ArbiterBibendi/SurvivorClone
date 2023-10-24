@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_foley_throw_object_spin_whoosh_air_002_28133.mp3-bf61ffb98a27f02c94e2fb3d1a7d9e0b.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/fast_swooshes/zapsplat_foley_throw_object_spin_whoosh_air_002_28133.mp3"
+dest_files=[ "res://.import/zapsplat_foley_throw_object_spin_whoosh_air_002_28133.mp3-bf61ffb98a27f02c94e2fb3d1a7d9e0b.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

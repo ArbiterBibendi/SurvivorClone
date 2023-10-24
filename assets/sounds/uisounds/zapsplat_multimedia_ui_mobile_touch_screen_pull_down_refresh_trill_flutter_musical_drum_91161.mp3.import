@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_multimedia_ui_mobile_touch_screen_pull_down_refresh_trill_flutter_musical_drum_91161.mp3-5df7858633b98b036ab5d6935f12b9b3.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/uisounds/zapsplat_multimedia_ui_mobile_touch_screen_pull_down_refresh_trill_flutter_musical_drum_91161.mp3"
+dest_files=[ "res://.import/zapsplat_multimedia_ui_mobile_touch_screen_pull_down_refresh_trill_flutter_musical_drum_91161.mp3-5df7858633b98b036ab5d6935f12b9b3.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_foley_metal_crowbar_swing_in_air_whoosh_001_30568.mp3-78b9440023bfb97143e50ad7cca24666.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/fast_swooshes/zapsplat_foley_metal_crowbar_swing_in_air_whoosh_001_30568.mp3"
+dest_files=[ "res://.import/zapsplat_foley_metal_crowbar_swing_in_air_whoosh_001_30568.mp3-78b9440023bfb97143e50ad7cca24666.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

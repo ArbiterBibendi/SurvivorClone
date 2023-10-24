@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_multimedia_ui_mobile_touch_screen_pull_down_refresh_trill_flutter_percussive_bold_001_91162.mp3-578f049c586b149d9a99bc8396518603.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/uisounds/zapsplat_multimedia_ui_mobile_touch_screen_pull_down_refresh_trill_flutter_percussive_bold_001_91162.mp3"
+dest_files=[ "res://.import/zapsplat_multimedia_ui_mobile_touch_screen_pull_down_refresh_trill_flutter_percussive_bold_001_91162.mp3-578f049c586b149d9a99bc8396518603.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

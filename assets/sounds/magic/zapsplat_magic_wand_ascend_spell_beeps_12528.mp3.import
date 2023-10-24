@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_magic_wand_ascend_spell_beeps_12528.mp3-4a85140bb67e0991e3214887c8f6ebb6.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/magic/zapsplat_magic_wand_ascend_spell_beeps_12528.mp3"
+dest_files=[ "res://.import/zapsplat_magic_wand_ascend_spell_beeps_12528.mp3-4a85140bb67e0991e3214887c8f6ebb6.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

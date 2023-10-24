@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_multimedia_ui_mobile_touch_screen_pull_down_refresh_trill_robotic_sci_fi_91170.mp3-e4414e8c1350315fcf2dd616e8f613a8.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/uisounds/zapsplat_multimedia_ui_mobile_touch_screen_pull_down_refresh_trill_robotic_sci_fi_91170.mp3"
+dest_files=[ "res://.import/zapsplat_multimedia_ui_mobile_touch_screen_pull_down_refresh_trill_robotic_sci_fi_91170.mp3-e4414e8c1350315fcf2dd616e8f613a8.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_multimedia_ui_refresh_smartphone_app_percussive_delayed_002_92641.mp3-8bf65bc8e1b2a15af8ea9a5633c5b49e.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/uisounds/zapsplat_multimedia_ui_refresh_smartphone_app_percussive_delayed_002_92641.mp3"
+dest_files=[ "res://.import/zapsplat_multimedia_ui_refresh_smartphone_app_percussive_delayed_002_92641.mp3-8bf65bc8e1b2a15af8ea9a5633c5b49e.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_foley_rubber_cord_whip_through_air_whoosh_001_22026.mp3-7f60df1357344a5c4512d1a8cf6438f1.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/fast_swooshes/zapsplat_foley_rubber_cord_whip_through_air_whoosh_001_22026.mp3"
+dest_files=[ "res://.import/zapsplat_foley_rubber_cord_whip_through_air_whoosh_001_22026.mp3-7f60df1357344a5c4512d1a8cf6438f1.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

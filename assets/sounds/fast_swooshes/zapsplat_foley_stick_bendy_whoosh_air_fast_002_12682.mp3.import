@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_foley_stick_bendy_whoosh_air_fast_002_12682.mp3-1d8d1afd242896dca0dac4936ac67333.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/fast_swooshes/zapsplat_foley_stick_bendy_whoosh_air_fast_002_12682.mp3"
+dest_files=[ "res://.import/zapsplat_foley_stick_bendy_whoosh_air_fast_002_12682.mp3-1d8d1afd242896dca0dac4936ac67333.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

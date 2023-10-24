@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_warfare_arrow_shoot_hit_target_004_14339.mp3-ec329494726b14b96266b5c2934a92f9.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/impacts/zapsplat_warfare_arrow_shoot_hit_target_004_14339.mp3"
+dest_files=[ "res://.import/zapsplat_warfare_arrow_shoot_hit_target_004_14339.mp3-ec329494726b14b96266b5c2934a92f9.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

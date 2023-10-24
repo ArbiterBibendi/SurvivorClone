@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_foley_whoosh_whip_swoosh_fast_002_55797.mp3-8471d14434b1e6a39ad02d2f40781f4f.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/fast_swooshes/zapsplat_foley_whoosh_whip_swoosh_fast_002_55797.mp3"
+dest_files=[ "res://.import/zapsplat_foley_whoosh_whip_swoosh_fast_002_55797.mp3-8471d14434b1e6a39ad02d2f40781f4f.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

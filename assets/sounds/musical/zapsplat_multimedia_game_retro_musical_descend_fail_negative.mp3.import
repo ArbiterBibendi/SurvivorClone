@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_multimedia_game_retro_musical_descend_fail_negative.mp3-ed8cde587757f8aa2062c9056ce4249d.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/musical/zapsplat_multimedia_game_retro_musical_descend_fail_negative.mp3"
+dest_files=[ "res://.import/zapsplat_multimedia_game_retro_musical_descend_fail_negative.mp3-ed8cde587757f8aa2062c9056ce4249d.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

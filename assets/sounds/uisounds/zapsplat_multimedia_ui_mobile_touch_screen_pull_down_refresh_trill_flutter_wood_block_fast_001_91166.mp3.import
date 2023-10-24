@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_multimedia_ui_mobile_touch_screen_pull_down_refresh_trill_flutter_wood_block_fast_001_91166.mp3-8aed5cdc375bb224b09b0b24d4927578.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/uisounds/zapsplat_multimedia_ui_mobile_touch_screen_pull_down_refresh_trill_flutter_wood_block_fast_001_91166.mp3"
+dest_files=[ "res://.import/zapsplat_multimedia_ui_mobile_touch_screen_pull_down_refresh_trill_flutter_wood_block_fast_001_91166.mp3-8aed5cdc375bb224b09b0b24d4927578.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

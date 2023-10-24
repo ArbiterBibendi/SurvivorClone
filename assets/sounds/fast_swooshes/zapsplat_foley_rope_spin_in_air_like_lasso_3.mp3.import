@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_foley_rope_spin_in_air_like_lasso_3.mp3-f3c0c9e63270736ddd042dc103247cd7.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/fast_swooshes/zapsplat_foley_rope_spin_in_air_like_lasso_3.mp3"
+dest_files=[ "res://.import/zapsplat_foley_rope_spin_in_air_like_lasso_3.mp3-f3c0c9e63270736ddd042dc103247cd7.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

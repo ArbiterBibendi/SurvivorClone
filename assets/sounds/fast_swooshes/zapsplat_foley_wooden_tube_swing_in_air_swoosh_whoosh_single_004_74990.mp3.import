@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_foley_wooden_tube_swing_in_air_swoosh_whoosh_single_004_74990.mp3-4cc08d122bb2082fb1f3c5fa5cd32375.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/fast_swooshes/zapsplat_foley_wooden_tube_swing_in_air_swoosh_whoosh_single_004_74990.mp3"
+dest_files=[ "res://.import/zapsplat_foley_wooden_tube_swing_in_air_swoosh_whoosh_single_004_74990.mp3-4cc08d122bb2082fb1f3c5fa5cd32375.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

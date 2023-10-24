@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_foley_thin_stick_swing_swipe_swoosh_whoosh_through_air_003_90361.mp3-02edf981b0f8861fb54d7a6c133b9de6.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/fast_swooshes/zapsplat_foley_thin_stick_swing_swipe_swoosh_whoosh_through_air_003_90361.mp3"
+dest_files=[ "res://.import/zapsplat_foley_thin_stick_swing_swipe_swoosh_whoosh_through_air_003_90361.mp3-02edf981b0f8861fb54d7a6c133b9de6.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

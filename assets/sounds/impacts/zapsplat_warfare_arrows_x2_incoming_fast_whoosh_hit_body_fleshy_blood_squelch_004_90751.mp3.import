@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_warfare_arrows_x2_incoming_fast_whoosh_hit_body_fleshy_blood_squelch_004_90751.mp3-e408f4c28555a6e1696f81f735510a4b.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/impacts/zapsplat_warfare_arrows_x2_incoming_fast_whoosh_hit_body_fleshy_blood_squelch_004_90751.mp3"
+dest_files=[ "res://.import/zapsplat_warfare_arrows_x2_incoming_fast_whoosh_hit_body_fleshy_blood_squelch_004_90751.mp3-e408f4c28555a6e1696f81f735510a4b.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
