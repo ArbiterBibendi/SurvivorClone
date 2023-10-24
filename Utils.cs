@@ -6,7 +6,7 @@ public static class Utils
 {
     public async static void QueueFree(Node node)
     {
-        List<Node> children = GetAllChildren(node);
+        List<Node> children = GetAllChildrenDeep(node);
         foreach (Node child in children)
         {
             // let audiostreamplayers finish sound before queueing free
@@ -24,15 +24,50 @@ public static class Utils
         }
         node.QueueFree();
     }
-    public static List<Node> GetAllChildren(Node node)
+    public static List<Node> GetAllChildrenDeep(Node node)
     {
         List<Node> children = new List<Node>();
         foreach (Node child in node.GetChildren())
         {
             children.Add(child);
-            children.AddRange(GetAllChildren(child));
+            children.AddRange(GetAllChildrenDeep(child));
         }
         return children;
+    }
+    public static List<Node> GetAllChildrenOfType<Type>(Node node)
+    {
+        List<Node> children = new List<Node>();
+        foreach (Node child in node.GetChildren())
+        {
+            if (child is Type)
+            {
+                children.Add(child);
+            }
+        }
+        return children;
+    }
+    public static List<Node> GetAllChildrenOfTypeDeep<Type>(Node node)
+    {
+        List<Node> children = GetAllChildrenDeep(node);
+        foreach (Node child in children)
+        {
+            if (child is Type)
+            {
+                children.Add(child);
+            }
+        }
+        return children;
+    }
+    public static Type FindChildOfType<Type>(Node node)
+    {
+        foreach (Node child in node.GetChildren())
+        {
+            if (child is Type typeChild)
+            {
+                return typeChild;
+            }
+        }
+        return default(Type);
     }
     public static void MoveToRoot(Node node)
     {
