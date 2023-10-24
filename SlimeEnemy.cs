@@ -11,7 +11,7 @@ public class SlimeEnemy : Character
 
     private Vector2 _velocity = Vector2.Zero;
     private readonly float _jumpForce = 500f;
-    private readonly int _jumpInterval = 3000; // milliseconds
+    private readonly int _jumpInterval = 2500; // milliseconds
     private bool _canJump = true;
     private bool _dead = false;
 
@@ -62,7 +62,7 @@ public class SlimeEnemy : Character
         {
             Jump();
         }
-        _velocity = _velocity.LinearInterpolate(Vector2.Zero, 0.05f);
+        _velocity = _velocity.LinearInterpolate(Vector2.Zero, 0.1f);
         Move(_velocity, delta);
     }
     private async void Jump()

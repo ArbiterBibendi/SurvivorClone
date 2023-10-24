@@ -36,6 +36,7 @@ public class Character : Area2D
             AddChild(_audioStreamPlayer);
         }
         _animatedSprite = Utils.FindChildOfType<AnimatedSprite>(this);
+        _animatedSprite.Playing = true;
         _animationPlayer = GetNodeOrNull<AnimationPlayer>("AnimationPlayer");
         Connect("area_entered", this, nameof(OnAreaEntered));
     }
