@@ -13,7 +13,6 @@ public class Spawner
     {
         _enemies = enemies;
         _level = level;
-        GD.Print(_enemies);
     }
     public async virtual void Enable()
     {
