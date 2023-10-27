@@ -34,13 +34,6 @@ public class SlimeEnemy : Character
         base._PhysicsProcess(delta);
         HandleMovement(delta);
     }
-    protected async override void Die()
-    {
-        CanTakeDamage = false;
-        _dead = true;
-        await Task.Delay(200);
-        Utils.QueueFree(this);
-    }
     
     protected override void OnAreaEntered(Area2D area)
     {

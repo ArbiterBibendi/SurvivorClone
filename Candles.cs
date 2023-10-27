@@ -54,6 +54,7 @@ public class Candles : Ability
     public override void _PhysicsProcess(float delta)
     {
         base._PhysicsProcess(delta);
+        
         Rotate(_rotationSpeed);
         foreach (Area2D area in Areas)
         {

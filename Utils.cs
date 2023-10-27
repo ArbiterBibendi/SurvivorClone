@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 public static class Utils
 {
-    public async static void QueueFree(Node node)
+    public static void QueueFree(Node node)
     {
         List<Node> children = GetAllChildrenDeep(node);
         foreach (Node child in children)
@@ -18,11 +18,17 @@ public static class Utils
             }
             else if (child is Particles2D particles)
             {
+                Vector2 position = particles.GlobalPosition;
                 MoveToRoot(particles);
-                await Task.Delay((int)(1000 * particles.Lifetime * (2 - particles.Explosiveness))); // wait until particles stop emitting
-                particles.QueueFree();
+                particles.GlobalPosition = position;
+                QueueFreeAfterWait(particles, (int)(1000 * particles.Lifetime * (2 - particles.Explosiveness)));
             }
         }
+        node.QueueFree();
+    }
+    private async static void QueueFreeAfterWait(Node node, int milliseconds)
+    {
+        await Task.Delay(milliseconds);
         node.QueueFree();
     }
     public static List<Node> GetAllChildrenDeep(Node node)
@@ -77,25 +83,29 @@ public static class Utils
         tree.Root.AddChild(node);
     }
     public delegate void Callback();
+    /* PlayAnimation plays the animation then calls the callback (if it exists)
+       if the animation does not exist the callback will be called immediately */
     public async static void PlayAnimation(AnimationPlayer animationPlayer, string name, Callback callback = null)
     {
         if (animationPlayer == null)
         {
+            callback?.Invoke();
             return;
         }
-        Animation animation = animationPlayer.GetAnimation(name);
 
-        
-        if (animation == null)
+        if (!animationPlayer.HasAnimation(name))
         {
-            GD.Print("Animation ", name, " not found");
+            GD.PushWarning($"Animation {name} not found");
+            callback?.Invoke();
             return;
         }
         animationPlayer.Play(name);
 
         if (callback != null)
         {
-            await Task.Delay((int)animation.Length * 1000);
+            Animation animation = animationPlayer.GetAnimation(name);
+            GD.Print((int)(animation.Length * 1000));
+            await Task.Delay((int)(animation.Length * 1000));
             callback();
         }
     }
