@@ -108,4 +108,18 @@ public static class Utils
             callback();
         }
     }
+    public static T Load<T>(string path) 
+    {
+        PackedScene packedScene = ResourceLoader.Load<PackedScene>(path);
+        if (packedScene == null || packedScene == default(Resource))
+        {
+            return default(T);
+        }
+        Node instance = packedScene.Instance();
+        if (instance is T t)
+        {
+            return t;
+        }
+        return default(T);
+    }
 }
