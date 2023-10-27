@@ -52,6 +52,7 @@ public class Character : Area2D
         Died?.Invoke(this, EventArgs.Empty);
         CanTakeDamage = false;
         PlayAudioStream(DeathSound);
+        Utils.PlayAnimation(_animationPlayer, "Died");
     }
     public virtual void Damage(float value)
     {
@@ -63,7 +64,7 @@ public class Character : Area2D
         _health = Mathf.Clamp(_health - value, MIN_HEALTH, MAX_HEALTH);
         Damaged?.Invoke(this, new DamagedEventArgs(healthBeforeTakeDamage, _health, value));
         PlayAudioStream(HitSound);
-        _animationPlayer?.Play("Damaged");
+        Utils.PlayAnimation(_animationPlayer, "Damaged");
         if (_health <= MIN_HEALTH)
         {
             Die();

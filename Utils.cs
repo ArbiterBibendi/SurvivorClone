@@ -1,4 +1,5 @@
 using Godot;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -74,5 +75,26 @@ public static class Utils
         SceneTree tree = node.GetTree();
         node.GetParent().RemoveChild(node);
         tree.Root.AddChild(node);
+    }
+    public delegate void Callback();
+    public async static void PlayAnimation(AnimationPlayer animationPlayer, string name, Callback callback = null)
+    {
+        Animation animation = null;
+        try
+        {
+            animation = animationPlayer.GetAnimation(name);
+        }
+        catch (Exception e)
+        {
+            GD.Print(e);
+            return;
+        }
+        animationPlayer.Play(name);
+
+        if (callback != null)
+        {
+            await Task.Delay((int)animation.Length * 1000);
+            callback();
+        }
     }
 }

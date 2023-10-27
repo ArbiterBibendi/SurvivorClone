@@ -76,7 +76,7 @@ public class Ability : Node2D
         }
     }
 
-    protected async virtual void StartAttack()
+    protected virtual void StartAttack()
     {
         if (Directional)
         {
@@ -85,9 +85,7 @@ public class Ability : Node2D
 
         Visible = true;
         _ableToDamage = true;
-        _animationPlayer?.Play("Attack");
-        await Task.Delay(AttackTime);
-        StopAttack();
+        Utils.PlayAnimation(_animationPlayer, "Attack", StopAttack);
     }
     protected virtual void StopAttack()
     {
