@@ -36,8 +36,7 @@ public class Character : Area2D
         _audioStreamPlayer = GetNodeOrNull<AudioStreamPlayer>("AudioStreamPlayer");
         if (_audioStreamPlayer == null)
         {
-            PackedScene scene = ResourceLoader.Load<PackedScene>("DefaultAudioStreamPlayer.tscn");
-            _audioStreamPlayer = scene.Instance<AudioStreamPlayer>();
+            _audioStreamPlayer = Utils.Load<AudioStreamPlayer>("DefaultAudioStreamPlayer.tscn");
             AddChild(_audioStreamPlayer);
         }
         _animatedSprite = Utils.GetChildOfType<AnimatedSprite>(this);
