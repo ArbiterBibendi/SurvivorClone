@@ -7,7 +7,11 @@ public static class Utils
 {
     public static void QueueFree(Node node)
     {
-        List<Node> children = GetAllChildrenDeep(node);
+        if (!Godot.Object.IsInstanceValid(node))
+        {
+            return;
+        }
+        List<Node> children = GetChildrenDeep(node);
         foreach (Node child in children)
         {
             // let audiostreamplayers finish sound before queueing free
@@ -31,17 +35,17 @@ public static class Utils
         await Task.Delay(milliseconds);
         node.QueueFree();
     }
-    public static List<Node> GetAllChildrenDeep(Node node)
+    public static List<Node> GetChildrenDeep(Node node)
     {
         List<Node> children = new List<Node>();
         foreach (Node child in node.GetChildren())
         {
             children.Add(child);
-            children.AddRange(GetAllChildrenDeep(child));
+            children.AddRange(GetChildrenDeep(child));
         }
         return children;
     }
-    public static List<Node> GetAllChildrenOfType<Type>(Node node)
+    public static List<Node> GetChildrenOfType<Type>(Node node)
     {
         List<Node> children = new List<Node>();
         foreach (Node child in node.GetChildren())
@@ -53,9 +57,9 @@ public static class Utils
         }
         return children;
     }
-    public static List<Node> GetAllChildrenOfTypeDeep<Type>(Node node)
+    public static List<Node> GetChildrenOfTypeDeep<Type>(Node node)
     {
-        List<Node> children = GetAllChildrenDeep(node);
+        List<Node> children = GetChildrenDeep(node);
         foreach (Node child in children)
         {
             if (child is Type)
@@ -65,7 +69,7 @@ public static class Utils
         }
         return children;
     }
-    public static Type FindChildOfType<Type>(Node node)
+    public static Type GetChildOfType<Type>(Node node)
     {
         foreach (Node child in node.GetChildren())
         {

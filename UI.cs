@@ -9,6 +9,7 @@ public class UI : Control
         _healthLabel = GetNode<Label>("Health");
         _healthLabel.Text = Player.Instance.Health.ToString();
         Player.Instance.Damaged += OnPlayerDamaged;
+        Player.Instance.Ready += Reset;
     }
 
     private void OnPlayerDamaged(object sender, DamagedEventArgs e)
@@ -19,5 +20,10 @@ public class UI : Control
         {
             _healthLabel.AddColorOverride("font_color", Color.ColorN("red"));
         }
+    }
+    private void Reset(object sender, EventArgs e)
+    {
+        _healthLabel.Text = Player.Instance.Health.ToString();
+        _healthLabel.RemoveColorOverride("font_color");
     }
 }

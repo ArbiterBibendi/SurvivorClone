@@ -39,11 +39,14 @@ public class Character : Area2D
             _audioStreamPlayer = scene.Instance<AudioStreamPlayer>();
             AddChild(_audioStreamPlayer);
         }
-        _animatedSprite = Utils.FindChildOfType<AnimatedSprite>(this);
+        _animatedSprite = Utils.GetChildOfType<AnimatedSprite>(this);
         _animatedSprite.Playing = true;
         _animationPlayer = GetNodeOrNull<AnimationPlayer>("AnimationPlayer");
         _deathParticles = GetNodeOrNull<Particles2D>("DeathParticles");
-        Connect("area_entered", this, nameof(OnAreaEntered));
+        if (!IsConnected("area_entered", this, nameof(OnAreaEntered)))
+        {
+            Connect("area_entered", this, nameof(OnAreaEntered));
+        }
     }
 
     protected virtual void OnAreaEntered(Area2D area)
@@ -51,10 +54,14 @@ public class Character : Area2D
     }
     protected virtual void Die()
     {
-        Died?.Invoke(this, EventArgs.Empty);
         CanTakeDamage = false;
         PlayAudioStream(DeathSound);
-        Utils.PlayAnimation(_animationPlayer, "Died", Despawn);
+        Utils.PlayAnimation(_animationPlayer, "Died", _Die);
+    }
+    private void _Die()
+    {
+        Despawn();
+        Died?.Invoke(this, EventArgs.Empty);
     }
     public virtual void Damage(float value)
     {
