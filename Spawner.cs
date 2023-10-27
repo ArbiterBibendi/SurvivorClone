@@ -34,9 +34,7 @@ public class Spawner
             return;
         }
         Character enemy = _enemies[0].Instance<Character>();
-        RandomNumberGenerator rng = new RandomNumberGenerator();
-        rng.Randomize();
-        float randomAngle = rng.RandfRange(0.0f, Mathf.Tau);
+        float randomAngle = GD.Randf() * Mathf.Tau;
         Vector2 position = (new Vector2(Mathf.Cos(randomAngle), Mathf.Sin(randomAngle)) * _distance) + Player.Instance.GlobalPosition;
         enemy.GlobalPosition = position;
         _level.AddChild(enemy);
