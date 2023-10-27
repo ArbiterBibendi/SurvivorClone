@@ -23,7 +23,7 @@ public class Player : Character
         _animatedSprite = GetNode<AnimatedSprite>("AnimatedSprite");
         _health = MAX_HEALTH;
         Position = Vector2.Zero;
-        //AddAbility("Daggers");
+        AddAbility("Daggers");
         AddAbility("Candles");
         Ready?.Invoke(this, EventArgs.Empty);
         CanTakeDamage = true;
@@ -98,6 +98,8 @@ public class Player : Character
     }
     private void FaceMovement()
     {
+        if (!MovementEnabled)
+            return;
         if (Input.IsActionJustPressed("up"))
         {
             _facingDirectionString = "up";
@@ -117,7 +119,8 @@ public class Player : Character
     }
     private void HandleSprite()
     {
-        _animatedSprite.Playing = !(_velocity.DistanceTo(Vector2.Zero) < 1f);
+        bool isStopped = _velocity.DistanceTo(Vector2.Zero) < 1f;
+        _animatedSprite.Playing = !isStopped && MovementEnabled;
         if (_facingDirectionString == "left")
         {
             _animatedSprite.FlipH = true;

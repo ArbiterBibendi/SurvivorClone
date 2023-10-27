@@ -18,6 +18,7 @@ public class Character : Area2D
     public event EventHandler<DamagedEventArgs> Damaged;
     public float Health { get => _health; }
     public bool CanTakeDamage { get; set; } = true;
+    public bool MovementEnabled { get; set; } = true;
 
     protected float _health = 100f;
     protected float MIN_HEALTH = 0f;
@@ -42,11 +43,13 @@ public class Character : Area2D
         _animatedSprite = Utils.GetChildOfType<AnimatedSprite>(this);
         _animatedSprite.Playing = true;
         _animationPlayer = GetNodeOrNull<AnimationPlayer>("AnimationPlayer");
+        _animationPlayer?.Play("RESET");
         _deathParticles = GetNodeOrNull<Particles2D>("DeathParticles");
         if (!IsConnected("area_entered", this, nameof(OnAreaEntered)))
         {
             Connect("area_entered", this, nameof(OnAreaEntered));
         }
+        MovementEnabled = true;
     }
 
     protected virtual void OnAreaEntered(Area2D area)
@@ -55,6 +58,7 @@ public class Character : Area2D
     protected virtual void Die()
     {
         CanTakeDamage = false;
+        MovementEnabled = false;
         PlayAudioStream(DeathSound);
         Utils.PlayAnimation(_animationPlayer, "Died", _Die);
     }
@@ -96,6 +100,7 @@ public class Character : Area2D
     }
     protected void Move(Vector2 velocity, float delta)
     {
+        velocity = MovementEnabled ? velocity : Vector2.Zero;
         Godot.Collections.Array areas = GetOverlappingAreas();
         if (areas.Count > 0)
         {

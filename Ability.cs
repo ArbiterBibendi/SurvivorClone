@@ -78,7 +78,10 @@ public class Ability : Node2D
 
     protected async virtual void StartAttack()
     {
-
+        if (!IsInstanceValid(this))
+        {
+            return;
+        }
         if (Directional)
         {
             LookAt(GlobalTransform.origin + Player.Instance.FacingDirection);

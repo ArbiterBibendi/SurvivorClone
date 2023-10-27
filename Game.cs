@@ -17,10 +17,9 @@ public class Game : Node2D
         _spawner = new Spawner(Level, enemiesList);
         _spawner.Enable();
     }
-    private async void Restart()
+    private void Restart()
     {
         End();
-        await Task.Delay(5000);
         Start();
     }
     private void End()
