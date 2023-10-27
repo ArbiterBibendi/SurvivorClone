@@ -79,14 +79,16 @@ public static class Utils
     public delegate void Callback();
     public async static void PlayAnimation(AnimationPlayer animationPlayer, string name, Callback callback = null)
     {
-        Animation animation = null;
-        try
+        if (animationPlayer == null)
         {
-            animation = animationPlayer.GetAnimation(name);
+            return;
         }
-        catch (Exception e)
+        Animation animation = animationPlayer.GetAnimation(name);
+
+        
+        if (animation == null)
         {
-            GD.Print(e);
+            GD.Print("Animation ", name, " not found");
             return;
         }
         animationPlayer.Play(name);
