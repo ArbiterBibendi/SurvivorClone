@@ -78,20 +78,22 @@ public class Ability : Node2D
 
     protected async virtual void StartAttack()
     {
+
         if (Directional)
         {
             LookAt(GlobalTransform.origin + Player.Instance.FacingDirection);
         }
 
-        Visible = true;
+        SetVisible(true);
         _ableToDamage = true;
         Utils.PlayAnimation(_animationPlayer, "Attack");
         await Task.Delay(AttackTime);
+        SetVisible(true);
         StopAttack();
     }
     protected virtual void StopAttack()
     {
-        Visible = false;
+        SetVisible(false);
         _ableToDamage = false;
     }
     private void OnAreaEntered(Area2D area)
@@ -109,5 +111,10 @@ public class Ability : Node2D
     protected void OnChildEnteredTree(Node child)
     {
         SetupAreaChildren();
+    }
+    private new void SetVisible(bool value)
+    {
+        if (IsInstanceValid(this)) // Object could be destroyed during wait
+                Visible = value;
     }
 }
