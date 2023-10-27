@@ -37,6 +37,10 @@ public class Player : Character
         base.Die();
         GD.Print("Dead");
     }
+    protected override void Despawn()
+    {
+        
+    }
     private void HandleMovement(float delta)
     {
         Vector2 input = Input.GetVector("left", "right", "up", "down");

@@ -27,6 +27,7 @@ public class Character : Area2D
     private AudioStreamPlayer _audioStreamPlayer = null;
     private AnimatedSprite _animatedSprite = null;
     private AnimationPlayer _animationPlayer = null;
+    private Particles2D _deathParticles = null;
 
     public override void _Ready()
     {
@@ -41,6 +42,7 @@ public class Character : Area2D
         _animatedSprite = Utils.FindChildOfType<AnimatedSprite>(this);
         _animatedSprite.Playing = true;
         _animationPlayer = GetNodeOrNull<AnimationPlayer>("AnimationPlayer");
+        _deathParticles = GetNodeOrNull<Particles2D>("DeathParticles");
         Connect("area_entered", this, nameof(OnAreaEntered));
     }
 
@@ -52,7 +54,9 @@ public class Character : Area2D
         Died?.Invoke(this, EventArgs.Empty);
         CanTakeDamage = false;
         PlayAudioStream(DeathSound);
-        Utils.PlayAnimation(_animationPlayer, "Died");
+        if (_deathParticles != null)
+            _deathParticles.Emitting = true;
+        Utils.PlayAnimation(_animationPlayer, "Died", Despawn);
     }
     public virtual void Damage(float value)
     {
@@ -69,6 +73,11 @@ public class Character : Area2D
         {
             Die();
         }
+    }
+
+    protected virtual void Despawn()
+    {
+        Utils.QueueFree(this);
     }
 
     private void PlayAudioStream(AudioStream stream)
