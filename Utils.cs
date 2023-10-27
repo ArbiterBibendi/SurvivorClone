@@ -104,7 +104,6 @@ public static class Utils
         if (callback != null)
         {
             Animation animation = animationPlayer.GetAnimation(name);
-            GD.Print((int)(animation.Length * 1000));
             await Task.Delay((int)(animation.Length * 1000));
             callback();
         }

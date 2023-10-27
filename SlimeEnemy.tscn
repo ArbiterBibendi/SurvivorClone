@@ -101,7 +101,9 @@ initial_velocity = 305.88
 initial_velocity_random = 1.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-color = Color( 1, 0, 0, 1 )
+scale = 2.0
+scale_random = 0.46
+color = Color( 0.466667, 0.466667, 0.466667, 1 )
 
 [node name="SlimeEnemy" type="Area2D"]
 script = ExtResource( 2 )
@@ -129,6 +131,8 @@ speed_scale = 0.4
 [node name="DeathParticles" type="Particles2D" parent="."]
 emitting = false
 amount = 100
+lifetime = 0.3
 one_shot = true
+speed_scale = 1.5
 explosiveness = 0.8
 process_material = SubResource( 18 )

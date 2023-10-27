@@ -6,7 +6,6 @@ public class Level : Node2D
     private Player _player = null;
     private Vector2 _playerCoords = Vector2.Zero;
     private TileMap _tileMap = null;
-    private Spawner _spawner;
     public override void _Ready()
     {
         base._Ready();
@@ -14,9 +13,6 @@ public class Level : Node2D
         _tileMap = GetNode<TileMap>("TileMap");
 
         _playerCoords = GetPlayerMapPosition(_player, _tileMap);
-        List<PackedScene> enemiesList = new List<PackedScene>(){ResourceLoader.Load<PackedScene>("SlimeEnemy.tscn")};
-        _spawner = new Spawner(this, enemiesList);
-        _spawner.Enable();
     }
     public override void _Process(float delta)
     {
