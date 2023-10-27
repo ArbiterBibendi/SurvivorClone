@@ -54,8 +54,6 @@ public class Character : Area2D
         Died?.Invoke(this, EventArgs.Empty);
         CanTakeDamage = false;
         PlayAudioStream(DeathSound);
-        if (_deathParticles != null)
-            _deathParticles.Emitting = true;
         Utils.PlayAnimation(_animationPlayer, "Died", Despawn);
     }
     public virtual void Damage(float value)
