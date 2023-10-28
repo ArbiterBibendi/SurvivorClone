@@ -65,6 +65,9 @@ public class Spawner
             return;
         }
         character.Died -= OnEnemyDied;
-        Enemies.Remove(character);
+        if (Enemies.Find(node => character == node) != null)
+        {
+            Enemies.Remove(character);
+        }
     }
 }

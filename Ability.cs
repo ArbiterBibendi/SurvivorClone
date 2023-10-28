@@ -1,5 +1,6 @@
 using Godot;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 
 public class Ability : Node2D
@@ -14,20 +15,29 @@ public class Ability : Node2D
     private AnimationPlayer _animationPlayer;
     private bool _ableToDamage = false;
     private bool _enabled = false;
+    private CancellationTokenSource cancellationTokenSource = null;
 
     public async void Enable()
     {
         _enabled = true;
         await Task.Delay(InitialWaitTime);
-        while (_enabled)
-        {
-            StartAttack();
-            await Task.Delay(Cooldown);
-        }
+        cancellationTokenSource = new CancellationTokenSource();
+        Task task = new Task(TaskAction, cancellationTokenSource.Token);
     }
     public void Disable()
     {
         _enabled = false;
+        cancellationTokenSource.Cancel();
+    }
+    private async void TaskAction()
+    {
+        while (_enabled)
+        {
+            StartAttack();
+            await Task.Delay(AttackTime);
+            StopAttack();
+            await Task.Delay(Cooldown);
+        }
     }
     public override void _Ready()
     {
@@ -76,7 +86,7 @@ public class Ability : Node2D
         }
     }
 
-    protected async virtual void StartAttack()
+    protected virtual void StartAttack()
     {
         if (!IsInstanceValid(this))
         {
@@ -90,9 +100,6 @@ public class Ability : Node2D
         SetVisible(true);
         _ableToDamage = true;
         Utils.PlayAnimation(_animationPlayer, "Attack");
-        await Task.Delay(AttackTime);
-        SetVisible(true);
-        StopAttack();
     }
     protected virtual void StopAttack()
     {
