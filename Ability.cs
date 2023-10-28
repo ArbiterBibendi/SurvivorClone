@@ -15,6 +15,7 @@ public class Ability : Node2D
     private AnimationPlayer _animationPlayer;
     private bool _ableToDamage = false;
     private bool _enabled = false;
+    private Task _task = null;
     private CancellationTokenSource cancellationTokenSource = null;
 
     public async void Enable()
@@ -22,12 +23,14 @@ public class Ability : Node2D
         _enabled = true;
         await Task.Delay(InitialWaitTime);
         cancellationTokenSource = new CancellationTokenSource();
-        Task task = new Task(TaskAction, cancellationTokenSource.Token);
+        //_task = new Task(TaskAction, cancellationTokenSource.Token);
+        //_task.Start();
+        TaskAction();
     }
     public void Disable()
     {
         _enabled = false;
-        cancellationTokenSource.Cancel();
+        //cancellationTokenSource?.Cancel();
     }
     private async void TaskAction()
     {

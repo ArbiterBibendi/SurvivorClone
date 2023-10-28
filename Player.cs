@@ -26,7 +26,7 @@ public class Player : Character
         _camera.Zoom = Vector2.One;
         _health = MAX_HEALTH;
         Position = Vector2.Zero;
-        AddAbility("Daggers");
+        //AddAbility("Daggers");
         AddAbility("Candles");
         CanTakeDamage = true;
 
@@ -38,6 +38,10 @@ public class Player : Character
         HandleMovement(delta);
         FaceMovement();
         HandleSprite();
+        if (Input.IsKeyPressed((int)KeyList.O))
+        {
+            Die();
+        }
     }
     public override void Damage(float value)
     {
@@ -54,14 +58,16 @@ public class Player : Character
         Ability ability = Utils.Load<Ability>($"abilities/{name}.tscn");
         if (ability != null)
         {
-            CallDeferred("add_child", ability);
+            AddChild(ability);
         }
     }
     private void RemoveAbilities()
     {
+        DisableAbilities();
         foreach (Node ability in Utils.GetChildrenOfType<Ability>(this))
         {
             Utils.QueueFree(ability);
+            GD.Print($"Removing {ability.Name}");
         }
     }
     private void DisableAbilities()

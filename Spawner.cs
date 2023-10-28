@@ -13,7 +13,7 @@ public class Spawner
     private Level _level = null;
     private bool _enabled = false;
     private Task _task = null;
-    private CancellationTokenSource tokenSource = null;
+    private CancellationTokenSource cancellationTokenSource = null;
     public Spawner(Level level, List<PackedScene> enemiesToSpawn)
     {
         _enemiesToSpawn = enemiesToSpawn;
@@ -25,16 +25,17 @@ public class Spawner
         if (_enabled)
             return;
         _enabled = true;
-        tokenSource = new CancellationTokenSource();
-        _task = new Task(TaskAction, tokenSource.Token);
-        _task.Start();
+        cancellationTokenSource = new CancellationTokenSource();
+        //_task = new Task(TaskAction, cancellationTokenSource.Token);
+        //_task.Start();
+        TaskAction();
     }
     public void Disable()
     {
         if (!_enabled)
             return;
         _enabled = false;
-        tokenSource.Cancel();
+        //cancellationTokenSource?.Cancel();
     }
     private async void TaskAction()
     {
