@@ -1,40 +1,48 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 
 public class Spawner
 {
-    public int Cooldown = 1000;
+    public int Cooldown = 150;
     public List<Node> Enemies = null;
     private int _distance = 500;
     private List<PackedScene> _enemiesToSpawn = null;
     private Level _level = null;
     private bool _enabled = false;
+    private Task _task = null;
+    private CancellationTokenSource tokenSource = null;
     public Spawner(Level level, List<PackedScene> enemiesToSpawn)
     {
         _enemiesToSpawn = enemiesToSpawn;
         _level = level;
         Enemies = new List<Node>();
     }
-    public async void Enable()
+    public void Enable()
     {
         if (_enabled)
             return;
-
         _enabled = true;
-        while(_enabled)
-        {
-            SpawnResourceOffScreen();
-            await Task.Delay(Cooldown);
-        }
+        tokenSource = new CancellationTokenSource();
+        _task = new Task(TaskAction, tokenSource.Token);
+        _task.Start();
     }
     public void Disable()
     {
         if (!_enabled)
             return;
-
         _enabled = false;
+        tokenSource.Cancel();
+    }
+    private async void TaskAction()
+    {
+        while(_enabled)
+        {
+            SpawnResourceOffScreen();
+            await Task.Delay(Cooldown);
+        }
     }
     private void SpawnResourceOffScreen()
     {
