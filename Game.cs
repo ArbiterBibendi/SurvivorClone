@@ -8,13 +8,16 @@ public class Game : Node2D
     public Level Level = null;
     private Spawner _spawner;
 
+
     public override void _Ready()
     {
         Player.Instance.Died += OnPlayerDied;
         Level = GetNode<Level>("Level");
-
-        List<PackedScene> enemiesList = new List<PackedScene>() { ResourceLoader.Load<PackedScene>("SlimeEnemy.tscn") };
-        _spawner = new Spawner(Level, enemiesList);
+        if (_spawner == null)
+        {
+            List<PackedScene> enemiesList = new List<PackedScene>() { ResourceLoader.Load<PackedScene>("SlimeEnemy.tscn") };
+            _spawner = new Spawner(Level, enemiesList);
+        }
         _spawner.Enable();
     }
     private void Restart()

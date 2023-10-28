@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 public class Spawner
 {
-    public int Cooldown = 300;
+    public int Cooldown = 1000;
     public List<Node> Enemies = null;
     private int _distance = 500;
     private List<PackedScene> _enemiesToSpawn = null;
@@ -17,8 +17,11 @@ public class Spawner
         _level = level;
         Enemies = new List<Node>();
     }
-    public async virtual void Enable()
+    public async void Enable()
     {
+        if (_enabled)
+            return;
+
         _enabled = true;
         while(_enabled)
         {
@@ -26,8 +29,11 @@ public class Spawner
             await Task.Delay(Cooldown);
         }
     }
-    public virtual void Disable()
+    public void Disable()
     {
+        if (!_enabled)
+            return;
+
         _enabled = false;
     }
     private void SpawnResourceOffScreen()
