@@ -8,6 +8,7 @@ public class Player : Character
     public EventHandler Ready = null;
 
     private AnimatedSprite _animatedSprite = null;
+    private Camera2D _camera = null;
     private Vector2 _velocity = Vector2.Zero;
     private float _speed = 175f;
     private float ACCELERATION_RATE = 0.5f;
@@ -21,12 +22,15 @@ public class Player : Character
     {
         base._Ready();
         _animatedSprite = GetNode<AnimatedSprite>("AnimatedSprite");
+        _camera = GetNode<Camera2D>("Camera2D");
+        _camera.Zoom = Vector2.One;
         _health = MAX_HEALTH;
         Position = Vector2.Zero;
         AddAbility("Daggers");
         AddAbility("Candles");
-        Ready?.Invoke(this, EventArgs.Empty);
         CanTakeDamage = true;
+
+        Ready?.Invoke(this, EventArgs.Empty);
     }
     public override void _PhysicsProcess(float delta)
     {

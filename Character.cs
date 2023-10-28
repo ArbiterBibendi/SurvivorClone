@@ -42,7 +42,7 @@ public class Character : Area2D
         _animatedSprite = Utils.GetChildOfType<AnimatedSprite>(this);
         _animatedSprite.Playing = true;
         _animationPlayer = GetNodeOrNull<AnimationPlayer>("AnimationPlayer");
-        _animationPlayer?.Play("RESET");
+        Utils.PlayAnimation(_animationPlayer, "RESET");
         _deathParticles = GetNodeOrNull<Particles2D>("DeathParticles");
         if (!IsConnected("area_entered", this, nameof(OnAreaEntered)))
         {
