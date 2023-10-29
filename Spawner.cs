@@ -12,7 +12,6 @@ public class Spawner
     private List<PackedScene> _enemiesToSpawn = null;
     private Level _level = null;
     private bool _enabled = false;
-    private Task _task = null;
     private CancellationTokenSource cancellationTokenSource = null;
     public Spawner(Level level, List<PackedScene> enemiesToSpawn)
     {
@@ -25,9 +24,12 @@ public class Spawner
         if (_enabled)
             return;
         _enabled = true;
+        if (cancellationTokenSource != null && !cancellationTokenSource.IsCancellationRequested)
+        {
+            GD.Print("Cancelled");
+            cancellationTokenSource.Cancel();
+        }
         cancellationTokenSource = new CancellationTokenSource();
-        //_task = new Task(TaskAction, cancellationTokenSource.Token);
-        //_task.Start();
         TaskAction();
     }
     public void Disable()
@@ -35,14 +37,18 @@ public class Spawner
         if (!_enabled)
             return;
         _enabled = false;
-        //cancellationTokenSource?.Cancel();
+        cancellationTokenSource.Cancel();
     }
     private async void TaskAction()
     {
-        while(_enabled)
+        while (_enabled)
         {
             SpawnResourceOffScreen();
-            await Task.Delay(Cooldown);
+            try
+            {
+                await Task.Delay(Cooldown, cancellationTokenSource.Token);
+            }
+            catch (TaskCanceledException) { break; }
         }
     }
     private void SpawnResourceOffScreen()

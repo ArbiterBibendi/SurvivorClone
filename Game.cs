@@ -28,7 +28,8 @@ public class Game : Node2D
     private void End()
     {
         _spawner.Disable();
-        foreach (Node enemy in _spawner.Enemies)
+        List<Node> enemies = new List<Node>(_spawner.Enemies);
+        foreach (Node enemy in enemies)
         {
             if (IsInstanceValid(enemy))
             {
