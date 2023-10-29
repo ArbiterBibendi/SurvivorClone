@@ -66,6 +66,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 6.78859, 8.74766 )
 
 [sub_resource type="AtlasTexture" id=19]
 atlas = ExtResource( 1 )
@@ -116,7 +117,7 @@ anims/Died = SubResource( 17 )
 anims/RESET = SubResource( 12 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -1, 0 )
+position = Vector2( -2.5, 2 )
 scale = Vector2( 1.2521, 1.82906 )
 shape = SubResource( 3 )
 
