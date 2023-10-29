@@ -23,6 +23,7 @@ public class Character : Area2D
     protected float _health = 100f;
     protected float MIN_HEALTH = 0f;
     protected float MAX_HEALTH = 100f;
+    private bool _dead = false;
 
     private readonly int _pushAwaySpeed = 50;
     private AudioStreamPlayer _audioStreamPlayer = null;
@@ -43,12 +44,12 @@ public class Character : Area2D
         _animatedSprite.Playing = true;
         _animationPlayer = GetNodeOrNull<AnimationPlayer>("AnimationPlayer");
         Utils.PlayAnimation(_animationPlayer, "RESET");
-        _deathParticles = GetNodeOrNull<Particles2D>("DeathParticles");
         if (!IsConnected("area_entered", this, nameof(OnAreaEntered)))
         {
             Connect("area_entered", this, nameof(OnAreaEntered));
         }
         MovementEnabled = true;
+        _dead = false;
     }
 
     protected virtual void OnAreaEntered(Area2D area)
@@ -56,6 +57,9 @@ public class Character : Area2D
     }
     protected virtual void Die()
     {
+        if (_dead)
+            return;
+        _dead = true;
         CanTakeDamage = false;
         MovementEnabled = false;
         PlayAudioStream(DeathSound);
