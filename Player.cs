@@ -26,7 +26,7 @@ public class Player : Character
         _camera.Zoom = Vector2.One;
         _health = MAX_HEALTH;
         Position = Vector2.Zero;
-        //AddAbility("Daggers");
+        AddAbility("Daggers");
         AddAbility("Candles");
         CanTakeDamage = true;
 
