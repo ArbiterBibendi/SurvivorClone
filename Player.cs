@@ -17,6 +17,7 @@ public class Player : Character
     public Player()
     {
         Instance = this;
+        MAX_HEALTH = 100;
     }
     public override void _Ready()
     {
@@ -24,7 +25,6 @@ public class Player : Character
         _animatedSprite = GetNode<AnimatedSprite>("AnimatedSprite");
         _camera = GetNode<Camera2D>("Camera2D");
         _camera.Zoom = Vector2.One;
-        _health = MAX_HEALTH;
         Position = Vector2.Zero;
         AddAbility("Daggers");
         AddAbility("Candles");

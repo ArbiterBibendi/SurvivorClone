@@ -20,7 +20,7 @@ public class Character : Area2D
     public bool CanTakeDamage { get; set; } = true;
     public bool MovementEnabled { get; set; } = true;
 
-    protected float _health = 100f;
+    private float _health = 100f;
     protected float MIN_HEALTH = 0f;
     protected float MAX_HEALTH = 100f;
     private bool _dead = false;
@@ -29,7 +29,6 @@ public class Character : Area2D
     private AudioStreamPlayer _audioStreamPlayer = null;
     private AnimatedSprite _animatedSprite = null;
     private AnimationPlayer _animationPlayer = null;
-    private Particles2D _deathParticles = null;
 
     public override void _Ready()
     {
@@ -50,6 +49,7 @@ public class Character : Area2D
         }
         MovementEnabled = true;
         _dead = false;
+        _health = MAX_HEALTH;
     }
 
     protected virtual void OnAreaEntered(Area2D area)
