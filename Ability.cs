@@ -37,7 +37,6 @@ public class Ability : Node2D
             }
             AttackTime = (int)(_animationPlayer.GetAnimation("Attack").Length * 1000);
         }
-        GD.Print("Added Candles");
         SetupAreaChildren();
         StopAttack();
         Enable();

@@ -26,7 +26,6 @@ public class Spawner
         _enabled = true;
         if (cancellationTokenSource != null && !cancellationTokenSource.IsCancellationRequested)
         {
-            GD.Print("Cancelled");
             cancellationTokenSource.Cancel();
         }
         cancellationTokenSource = new CancellationTokenSource();

@@ -50,7 +50,6 @@ public class Player : Character
     {
         base.Die();
         RemoveAbilities();
-        GD.Print("Dead");
     }
     private void AddAbility(string name)
     {
@@ -66,7 +65,6 @@ public class Player : Character
         foreach (Node ability in Utils.GetChildrenOfType<Ability>(this))
         {
             Utils.QueueFree(ability);
-            GD.Print($"Removing {ability.Name}");
         }
     }
     private void DisableAbilities()
