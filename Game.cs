@@ -33,7 +33,7 @@ public class Game : Node2D
     private void Start()
     {
         _spawner.Enable();
-        Player.Instance.ResetValues();
+        Player.Instance._Ready();
     }
     public void OnPlayerDied(object sender, EventArgs args)
     {

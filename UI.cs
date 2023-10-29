@@ -9,7 +9,7 @@ public class UI : Control
         _healthLabel = GetNode<Label>("Health");
         _healthLabel.Text = Player.Instance.Health.ToString();
         Player.Instance.Damaged += OnPlayerDamaged;
-        Player.Instance.Reset += Reset;
+        Player.Instance.Ready += Reset;
     }
 
     private void OnPlayerDamaged(object sender, DamagedEventArgs e)

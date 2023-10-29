@@ -5,7 +5,7 @@ public class Player : Character
 {
     public static Player Instance;
     public Vector2 FacingDirection {get; private set;} = Vector2.Up;
-    public EventHandler Reset = null;
+    public EventHandler Ready = null;
 
     private AnimatedSprite _animatedSprite = null;
     private Camera2D _camera = null;
@@ -23,17 +23,13 @@ public class Player : Character
         base._Ready();
         _animatedSprite = GetNode<AnimatedSprite>("AnimatedSprite");
         _camera = GetNode<Camera2D>("Camera2D");
-        ResetValues();
-    }
-    public void ResetValues()
-    {
         _camera.Zoom = Vector2.One;
         _health = MAX_HEALTH;
         Position = Vector2.Zero;
         AddAbility("Daggers");
         AddAbility("Candles");
         CanTakeDamage = true;
-        Reset?.Invoke(this, EventArgs.Empty);
+        Ready?.Invoke(this, EventArgs.Empty);
     }
     public override void _PhysicsProcess(float delta)
     {
