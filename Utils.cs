@@ -15,6 +15,8 @@ public static class Utils
         List<Node> children = GetChildrenDeep(node);
         foreach (Node child in children)
         {
+            if (!Node.IsInstanceValid(child))
+                return;
             // let audiostreamplayers finish sound before queueing free
             if (child is AudioStreamPlayer audioStreamPlayer)
             {
@@ -23,7 +25,7 @@ public static class Utils
             }
             else if (child is Particles2D particles)
             {
-                Vector2 position = particles.GlobalPosition;
+                Vector2 position = child.IsInsideTree() ? particles.GlobalPosition : particles.Position;
                 MoveToRoot(particles);
                 particles.GlobalPosition = position;
                 QueueFreeAfterWait(particles, (int)(1000 * particles.Lifetime * (2 - particles.Explosiveness)));
@@ -83,6 +85,8 @@ public static class Utils
     }
     public static void MoveToRoot(Node node)
     {
+        if (!Node.IsInstanceValid(node) || !node.IsInsideTree())
+            return;
         SceneTree tree = node.GetTree();
         node.GetParent().RemoveChild(node);
         tree.Root.AddChild(node);
