@@ -37,18 +37,14 @@ public class Spawner
         if (!_enabled)
             return;
         _enabled = false;
-        cancellationTokenSource.Cancel();
+        cancellationTokenSource?.Cancel();
     }
     private async void TaskAction()
     {
         while (_enabled)
         {
             SpawnResourceOffScreen();
-            try
-            {
-                await Task.Delay(Cooldown, cancellationTokenSource.Token);
-            }
-            catch (TaskCanceledException) { break; }
+            await Utils.Delay(Cooldown, cancellationTokenSource.Token);
         }
     }
     private void SpawnResourceOffScreen()

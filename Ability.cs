@@ -17,31 +17,6 @@ public class Ability : Node2D
     private bool _enabled = false;
     private Task _task = null;
     private CancellationTokenSource cancellationTokenSource = null;
-
-    public async void Enable()
-    {
-        _enabled = true;
-        await Task.Delay(InitialWaitTime);
-        cancellationTokenSource = new CancellationTokenSource();
-        //_task = new Task(TaskAction, cancellationTokenSource.Token);
-        //_task.Start();
-        TaskAction();
-    }
-    public void Disable()
-    {
-        _enabled = false;
-        //cancellationTokenSource?.Cancel();
-    }
-    private async void TaskAction()
-    {
-        while (_enabled)
-        {
-            StartAttack();
-            await Task.Delay(AttackTime);
-            StopAttack();
-            await Task.Delay(Cooldown);
-        }
-    }
     public override void _Ready()
     {
         base._Ready();
@@ -62,10 +37,37 @@ public class Ability : Node2D
             }
             AttackTime = (int)(_animationPlayer.GetAnimation("Attack").Length * 1000);
         }
-
+        GD.Print("Added Candles");
         SetupAreaChildren();
         StopAttack();
         Enable();
+    }
+
+    public async void Enable()
+    {
+        _enabled = true;
+        await Utils.Delay(InitialWaitTime);
+        if (cancellationTokenSource != null && cancellationTokenSource.IsCancellationRequested)
+        {
+            cancellationTokenSource.Cancel();
+        }
+        cancellationTokenSource = new CancellationTokenSource();
+        TaskAction();
+    }
+    public void Disable()
+    {
+        _enabled = false;
+        cancellationTokenSource?.Cancel();
+    }
+    private async void TaskAction()
+    {
+        while (_enabled)
+        {
+            StartAttack();
+            await Utils.Delay(AttackTime, cancellationTokenSource.Token);
+            StopAttack();
+            await Utils.Delay(Cooldown, cancellationTokenSource.Token);
+        }
     }
 
     protected void SetupAreaChildren()

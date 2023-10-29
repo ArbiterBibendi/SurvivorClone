@@ -46,7 +46,7 @@ public class SlimeEnemy : Character
     {
         _canDamagePlayer = false;
         _player.Damage(_damage);
-        await Task.Delay(1000);
+        await Utils.Delay(1000);
         _canDamagePlayer = true;
     }
     private void HandleMovement(float delta)
@@ -64,7 +64,7 @@ public class SlimeEnemy : Character
         Vector2 targetDirection = new Vector2(_player.GlobalTransform.origin - GlobalTransform.origin);
         Vector2 targetVelocity = targetDirection.Normalized() * _jumpForce;
         _velocity = targetVelocity;
-        await Task.Delay(_jumpInterval);
+        await Utils.Delay(_jumpInterval);
         _canJump = true;
     }
 }

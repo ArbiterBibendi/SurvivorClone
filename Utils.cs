@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 
 public static class Utils
@@ -112,7 +113,7 @@ public static class Utils
             callback();
         }
     }
-    public static T Load<T>(string path) 
+    public static T Load<T>(string path)
     {
         PackedScene packedScene = ResourceLoader.Load<PackedScene>(path);
         if (packedScene == null || packedScene == default(Resource))
@@ -125,5 +126,19 @@ public static class Utils
             return t;
         }
         return default(T);
+    }
+    public async static Task Delay(int millisecondsDelay, CancellationToken cancellationToken)
+    {
+        try
+        {
+            await Task.Delay(millisecondsDelay, cancellationToken);
+        }
+        catch (Exception) { }
+        return;
+    }
+    public async static Task Delay(int millisecondsDelay)
+    {
+        await Task.Delay(millisecondsDelay);
+        return;
     }
 }
