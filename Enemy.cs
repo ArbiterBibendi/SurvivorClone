@@ -3,16 +3,19 @@ using System;
 
 public class Enemy : Character
 {
+    [Export]
+    public float DamageValue = 25f;
+    [Export]
+    public float Speed = 100f;
     protected Vector2 Velocity = Vector2.Zero;
     protected bool Dead = false;
     protected Player Player = null;
 
     private bool _canDamagePlayer = true;
-    private float _damage = 25f;
 
     public Enemy()
     {
-        MAX_HEALTH = 25f;
+        MaxHealth = 25f;
     }
     public override void _Ready()
     {
@@ -31,6 +34,7 @@ public class Enemy : Character
 
     protected virtual void HandleMovement(float delta)
     {
+        Velocity = (Player.GlobalPosition - GlobalPosition).Normalized() * Speed;
         Move(Velocity, delta);
     }
 
@@ -44,7 +48,7 @@ public class Enemy : Character
     private async void DamagePlayer()
     {
         _canDamagePlayer = false;
-        Player.Damage(_damage);
+        Player.Damage(DamageValue);
         await Utils.Delay(1000);
         _canDamagePlayer = true;
     }
