@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 public class Spawner
 {
     public int Cooldown = 150;
-    public List<Node> Enemies = null;
+    public List<Character> Enemies = null;
     private int _distance = 500;
     private List<PackedScene> _enemiesToSpawn = null;
     private Level _level = null;
@@ -17,7 +17,7 @@ public class Spawner
     {
         _enemiesToSpawn = enemiesToSpawn;
         _level = level;
-        Enemies = new List<Node>();
+        Enemies = new List<Character>();
     }
     public void Enable()
     {
@@ -53,7 +53,8 @@ public class Spawner
         {
             return;
         }
-        Character enemy = _enemiesToSpawn[0].Instance<Character>();
+        int enemiesIndex = (int)(GD.Randi() % _enemiesToSpawn.Count);
+        Character enemy = _enemiesToSpawn[enemiesIndex].Instance<Character>();
         Enemies.Add(enemy);
         enemy.Died += OnEnemyDied;
         float randomAngle = GD.Randf() * Mathf.Tau;
@@ -75,10 +76,10 @@ public class Spawner
     }
     public void DequeueAll()
     {
-        List<Node> enemies = new List<Node>(Enemies);
-        foreach (Node enemy in enemies)
+        List<Character> enemies = new List<Character>(Enemies);
+        foreach (Character enemy in enemies)
         {
-            if (Node.IsInstanceValid(enemy))
+            if (Character.IsInstanceValid(enemy))
             {
                 Utils.QueueFree(enemy);
             }
