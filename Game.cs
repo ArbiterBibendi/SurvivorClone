@@ -28,19 +28,12 @@ public class Game : Node2D
     private void End()
     {
         _spawner.Disable();
-        List<Node> enemies = new List<Node>(_spawner.Enemies);
-        foreach (Node enemy in enemies)
-        {
-            if (IsInstanceValid(enemy))
-            {
-                enemy.QueueFree();
-            }
-        }
+        _spawner.DequeueAll();
     }
     private void Start()
     {
         _spawner.Enable();
-        Player.Instance._Ready();
+        Player.Instance.ResetValues();
     }
     public void OnPlayerDied(object sender, EventArgs args)
     {

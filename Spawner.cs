@@ -73,4 +73,15 @@ public class Spawner
             Enemies.Remove(character);
         }
     }
+    public void DequeueAll()
+    {
+        List<Node> enemies = new List<Node>(Enemies);
+        foreach (Node enemy in enemies)
+        {
+            if (Node.IsInstanceValid(enemy))
+            {
+                Utils.QueueFree(enemy);
+            }
+        }
+    }
 }
