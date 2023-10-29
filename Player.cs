@@ -17,7 +17,7 @@ public class Player : Character
     public Player()
     {
         Instance = this;
-        MAX_HEALTH = 100;
+        MaxHealth = 100;
     }
     public override void _Ready()
     {

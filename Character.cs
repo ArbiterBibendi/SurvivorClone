@@ -13,6 +13,8 @@ public class Character : Area2D
     public AudioStreamMP3 HitSound;
     [Export]
     public AudioStreamMP3 AttackSound;
+    [Export]
+    public float MaxHealth = 100f;
 
     public event EventHandler Died;
     public event EventHandler<DamagedEventArgs> Damaged;
@@ -20,9 +22,8 @@ public class Character : Area2D
     public bool CanTakeDamage { get; set; } = true;
     public bool MovementEnabled { get; set; } = true;
 
+    protected float MinHealth = 0f;
     private float _health = 100f;
-    protected float MIN_HEALTH = 0f;
-    protected float MAX_HEALTH = 100f;
     private bool _dead = false;
 
     private readonly int _pushAwaySpeed = 50;
@@ -49,7 +50,7 @@ public class Character : Area2D
         }
         MovementEnabled = true;
         _dead = false;
-        _health = MAX_HEALTH;
+        _health = MaxHealth;
     }
 
     protected virtual void OnAreaEntered(Area2D area)
@@ -77,11 +78,11 @@ public class Character : Area2D
             return;
         }
         float healthBeforeTakeDamage = _health;
-        _health = Mathf.Clamp(_health - value, MIN_HEALTH, MAX_HEALTH);
+        _health = Mathf.Clamp(_health - value, MinHealth, MaxHealth);
         Damaged?.Invoke(this, new DamagedEventArgs(healthBeforeTakeDamage, _health, value));
         PlayAudioStream(HitSound);
         Utils.PlayAnimation(_animationPlayer, "Damaged");
-        if (_health <= MIN_HEALTH)
+        if (_health <= MinHealth)
         {
             Die();
         }
