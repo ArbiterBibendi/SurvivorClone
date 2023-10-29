@@ -15,7 +15,11 @@ public class Game : Node2D
         Level = GetNode<Level>("Level");
         if (_spawner == null)
         {
-            List<PackedScene> enemiesList = new List<PackedScene>() { ResourceLoader.Load<PackedScene>("SlimeEnemy.tscn") };
+            List<PackedScene> enemiesList = new List<PackedScene>() 
+            {
+                ResourceLoader.Load<PackedScene>("SlimeEnemy.tscn"),
+                ResourceLoader.Load<PackedScene>("Enemy.tscn"),
+            };
             _spawner = new Spawner(Level, enemiesList);
         }
         _spawner.Enable();
