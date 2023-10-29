@@ -6,20 +6,22 @@ using System.Threading.Tasks;
 
 public static class Utils
 {
-    public static void QueueFree(Node node)
+    public static void QueueFree(Godot.Node node)
     {
         if (!Godot.Object.IsInstanceValid(node))
         {
             return;
         }
-        List<Node> children = GetChildrenDeep(node);
-        foreach (Node child in children)
+        List<Godot.Node> children = GetChildrenDeep(node);
+        foreach (Godot.Node child in children)
         {
-            if (!Node.IsInstanceValid(child))
+            if (!Godot.Node.IsInstanceValid(child))
                 return;
             // let audiostreamplayers finish sound before queueing free
             if (child is AudioStreamPlayer audioStreamPlayer)
             {
+                if (!audioStreamPlayer.Playing)
+                    audioStreamPlayer.QueueFree();
                 MoveToRoot(audioStreamPlayer);
                 audioStreamPlayer.Connect("finished", audioStreamPlayer, "queue_free");
             }
@@ -33,25 +35,25 @@ public static class Utils
         }
         node.QueueFree();
     }
-    private async static void QueueFreeAfterWait(Node node, int milliseconds)
+    private async static void QueueFreeAfterWait(Godot.Node node, int milliseconds)
     {
         await Task.Delay(milliseconds);
         node.QueueFree();
     }
-    public static List<Node> GetChildrenDeep(Node node)
+    public static List<Godot.Node> GetChildrenDeep(Godot.Node node)
     {
-        List<Node> children = new List<Node>();
-        foreach (Node child in node.GetChildren())
+        List<Godot.Node> children = new List<Godot.Node>();
+        foreach (Godot.Node child in node.GetChildren())
         {
             children.Add(child);
             children.AddRange(GetChildrenDeep(child));
         }
         return children;
     }
-    public static List<Node> GetChildrenOfType<Type>(Node node)
+    public static List<Godot.Node> GetChildrenOfType<Type>(Godot.Node node)
     {
-        List<Node> children = new List<Node>();
-        foreach (Node child in node.GetChildren())
+        List<Godot.Node> children = new List<Godot.Node>();
+        foreach (Godot.Node child in node.GetChildren())
         {
             if (child is Type)
             {
@@ -60,10 +62,10 @@ public static class Utils
         }
         return children;
     }
-    public static List<Node> GetChildrenOfTypeDeep<Type>(Node node)
+    public static List<Godot.Node> GetChildrenOfTypeDeep<Type>(Godot.Node node)
     {
-        List<Node> children = GetChildrenDeep(node);
-        foreach (Node child in children)
+        List<Godot.Node> children = GetChildrenDeep(node);
+        foreach (Godot.Node child in children)
         {
             if (child is Type)
             {
@@ -72,9 +74,9 @@ public static class Utils
         }
         return children;
     }
-    public static Type GetChildOfType<Type>(Node node)
+    public static Type GetChildOfType<Type>(Godot.Node node)
     {
-        foreach (Node child in node.GetChildren())
+        foreach (Godot.Node child in node.GetChildren())
         {
             if (child is Type typeChild)
             {
@@ -83,9 +85,9 @@ public static class Utils
         }
         return default(Type);
     }
-    public static void MoveToRoot(Node node)
+    public static void MoveToRoot(Godot.Node node)
     {
-        if (!Node.IsInstanceValid(node) || !node.IsInsideTree())
+        if (!Godot.Node.IsInstanceValid(node) || !node.IsInsideTree())
             return;
         SceneTree tree = node.GetTree();
         node.GetParent().RemoveChild(node);
@@ -124,7 +126,7 @@ public static class Utils
         {
             return default(T);
         }
-        Node instance = packedScene.Instance();
+        Godot.Node instance = packedScene.Instance();
         if (instance is T t)
         {
             return t;
