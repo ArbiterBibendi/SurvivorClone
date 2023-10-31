@@ -92,7 +92,7 @@ public class Ability : Node2D
 
     protected virtual void StartAttack()
     {
-        if (!IsInstanceValid(this))
+        if (!IsInstanceValid(this) || Player.Instance == null)
         {
             return;
         }

@@ -8,7 +8,7 @@ public class Candles : Ability
 {
     [Export]
     public PackedScene CandleScene = null;
-    private int _numberOfCandles = 4;
+    private int _numberOfCandles = 12;
     private float _distance = 100;
     private float _rotationSpeed = 0.06f;
     public Candles()

@@ -17,8 +17,9 @@ public class Game : Node2D
         {
             List<PackedScene> enemiesList = new List<PackedScene>() 
             {
-                ResourceLoader.Load<PackedScene>("SlimeEnemy.tscn"),
-                ResourceLoader.Load<PackedScene>("Enemy.tscn"),
+                ResourceLoader.Load<PackedScene>("scenes/characters/Slime.tscn"),
+                ResourceLoader.Load<PackedScene>("scenes/characters/Mage.tscn"),
+                ResourceLoader.Load<PackedScene>("scenes/characters/Golem.tscn"),
             };
             _spawner = new Spawner(Level, enemiesList);
         }

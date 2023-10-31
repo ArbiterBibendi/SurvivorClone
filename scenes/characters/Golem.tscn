@@ -1,10 +1,10 @@
 [gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://assets/skilled battlemage/SkilledBattlemageIdle.png" type="Texture" id=1]
-[ext_resource path="res://assets/sounds/impacts/zapsplat_warfare_arrow_whoosh_impact_dirt_016_90152.mp3" type="AudioStream" id=2]
-[ext_resource path="res://Enemy.cs" type="Script" id=3]
-[ext_resource path="res://assets/sounds/impacts/zapsplat_warfare_arrow_whoosh_impact_dirt_001_90137.mp3" type="AudioStream" id=4]
-[ext_resource path="res://ShaderMaterial.tres" type="Material" id=5]
+[ext_resource path="res://resources/ShaderMaterial.tres" type="Material" id=1]
+[ext_resource path="res://src/Enemy.cs" type="Script" id=2]
+[ext_resource path="res://assets/iron golem/IronGolemIdle.png" type="Texture" id=3]
+[ext_resource path="res://assets/sounds/impacts/zapsplat_warfare_arrow_whizz_in_hit_metal_shield_002_90733.mp3" type="AudioStream" id=4]
+[ext_resource path="res://assets/sounds/impacts/zapsplat_warfare_arrow_whizz_in_hit_metal_shield_004_90735.mp3" type="AudioStream" id=5]
 
 [sub_resource type="Animation" id=11]
 resource_name = "Damaged"
@@ -69,19 +69,19 @@ tracks/0/keys = {
 extents = Vector2( 6.78859, 8.74766 )
 
 [sub_resource type="AtlasTexture" id=19]
-atlas = ExtResource( 1 )
+atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=20]
-atlas = ExtResource( 1 )
+atlas = ExtResource( 3 )
 region = Rect2( 16, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=21]
-atlas = ExtResource( 1 )
+atlas = ExtResource( 3 )
 region = Rect2( 32, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=22]
-atlas = ExtResource( 1 )
+atlas = ExtResource( 3 )
 region = Rect2( 48, 0, 16, 16 )
 
 [sub_resource type="SpriteFrames" id=10]
@@ -107,9 +107,12 @@ scale_random = 0.46
 color = Color( 0.466667, 0.466667, 0.466667, 1 )
 
 [node name="Enemy" type="Area2D"]
-script = ExtResource( 3 )
-DeathSound = ExtResource( 2 )
+script = ExtResource( 2 )
+DeathSound = ExtResource( 5 )
 HitSound = ExtResource( 4 )
+MaxHealth = 300.0
+DamageValue = 50.0
+Speed = 20.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Damaged = SubResource( 11 )
@@ -117,16 +120,15 @@ anims/Died = SubResource( 17 )
 anims/RESET = SubResource( 12 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -2.5, 2 )
-scale = Vector2( 1.2521, 1.82906 )
+position = Vector2( -1, 1 )
+scale = Vector2( 2.79043, 4.27048 )
 shape = SubResource( 3 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-material = ExtResource( 5 )
+material = ExtResource( 1 )
 position = Vector2( 1, 0 )
-scale = Vector2( 2.34951, 2.5 )
+scale = Vector2( 3.91133, 4.81272 )
 frames = SubResource( 10 )
-frame = 1
 speed_scale = 0.4
 
 [node name="DeathParticles" type="Particles2D" parent="."]

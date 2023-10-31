@@ -53,7 +53,7 @@ public class Player : Character
     }
     private void AddAbility(string name)
     {
-        Ability ability = Utils.Load<Ability>($"abilities/{name}.tscn");
+        Ability ability = Utils.Load<Ability>($"scenes/abilities/{name}.tscn");
         if (ability != null)
         {
             AddChild(ability);

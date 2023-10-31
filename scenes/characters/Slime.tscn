@@ -1,0 +1,138 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://resources/ShaderMaterial.tres" type="Material" id=1]
+[ext_resource path="res://src/Slime.cs" type="Script" id=2]
+[ext_resource path="res://assets/sounds/impacts/zapsplat_warfare_arrow_whoosh_hit_water_splash_003_90116.mp3" type="AudioStream" id=3]
+[ext_resource path="res://assets/gelatinous cube/GelatinousCubeIdle.png" type="Texture" id=4]
+[ext_resource path="res://assets/sounds/impacts/zapsplat_warfare_arrow_whoosh_impact_dirt_003_90139.mp3" type="AudioStream" id=5]
+
+[sub_resource type="Animation" id=11]
+resource_name = "Damaged"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:material:shader_param/flash_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0, 0 ), Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=17]
+resource_name = "Died"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:material:shader_param/flash_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0, 0 ), Color( 0, 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DeathParticles:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=12]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:material:shader_param/flash_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=3]
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 18, 16 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 4 )
+region = Rect2( 18, 0, 18, 16 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 4 )
+region = Rect2( 36, 0, 18, 16 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 4 )
+region = Rect2( 54, 0, 18, 16 )
+
+[sub_resource type="SpriteFrames" id=10]
+animations = [ {
+"frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ) ],
+"loop": true,
+"name": "default",
+"speed": 4.0
+} ]
+
+[sub_resource type="ParticlesMaterial" id=18]
+emission_shape = 1
+emission_sphere_radius = 1.0
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 305.88
+initial_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 2.0
+scale_random = 0.46
+color = Color( 0.466667, 0.466667, 0.466667, 1 )
+
+[node name="Slime" type="Area2D"]
+script = ExtResource( 2 )
+DeathSound = ExtResource( 3 )
+HitSound = ExtResource( 5 )
+MaxHealth = 5.0
+DamageValue = 5.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Damaged = SubResource( 11 )
+anims/Died = SubResource( 17 )
+anims/RESET = SubResource( 12 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 3 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+material = ExtResource( 1 )
+position = Vector2( 1, 0 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 10 )
+frame = 2
+speed_scale = 0.4
+
+[node name="DeathParticles" type="Particles2D" parent="."]
+emitting = false
+amount = 100
+lifetime = 0.3
+one_shot = true
+speed_scale = 1.5
+explosiveness = 0.8
+process_material = SubResource( 18 )
