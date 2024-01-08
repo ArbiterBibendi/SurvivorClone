@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 /* Any child of this should be an Area2D and will be considered a candle */
@@ -8,7 +9,7 @@ public class Candles : Ability
 {
     [Export]
     public PackedScene CandleScene = null;
-    private int _numberOfCandles = 12;
+    private int _numberOfCandles = 1;
     private float _distance = 100;
     private float _rotationSpeed = 0.06f;
     public Candles()
@@ -18,6 +19,33 @@ public class Candles : Ability
         Directional = false;
         Cooldown = 5000;
         AttackTime = 3000;
+        UpgradeFunctions = new List<Action>()
+        {
+            () =>
+            {
+                SetCandles(2);
+            },
+            () =>
+            {
+                SetCandles(4);
+            },
+            () => 
+            {
+                SetCandles(6);
+            },
+            () => 
+            {
+                SetCandles(8);
+            },
+            () => 
+            {
+                SetCandles(10);
+            },
+            () => 
+            {
+                SetCandles(12);
+            }
+        };
     }
     public void SetCandles(int numberOfCandles)
     {
@@ -54,11 +82,16 @@ public class Candles : Ability
     public override void _PhysicsProcess(float delta)
     {
         base._PhysicsProcess(delta);
-        
+
         Rotate(_rotationSpeed);
         foreach (Area2D area in Areas)
         {
-            area.GlobalRotation = 0f; // keep candle upright when rotating parent
+            if (!area.IsQueuedForDeletion())
+                area.GlobalRotation = 0f; // keep candle upright when rotating parent
+        }
+        if (Input.IsActionJustPressed("upgrade"))
+        {
+            Upgrade();
         }
     }
 }

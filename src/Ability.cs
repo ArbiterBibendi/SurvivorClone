@@ -1,4 +1,5 @@
 using Godot;
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -11,12 +12,14 @@ public class Ability : Node2D
     protected bool Directional = true;
     protected int AttackTime = 0;
     protected int Cooldown = 2000;
+    protected List<Action> UpgradeFunctions;
 
     private AnimationPlayer _animationPlayer;
     private bool _ableToDamage = false;
     private bool _enabled = false;
     private Task _task = null;
     private CancellationTokenSource cancellationTokenSource = null;
+    private IEnumerator<Action> upgradeEnumator;
     public override void _Ready()
     {
         base._Ready();
@@ -37,6 +40,7 @@ public class Ability : Node2D
             }
             AttackTime = (int)(_animationPlayer.GetAnimation("Attack").Length * 1000);
         }
+        upgradeEnumator = UpgradeFunctions.GetEnumerator();
         SetupAreaChildren();
         StopAttack();
         Enable();
@@ -130,5 +134,21 @@ public class Ability : Node2D
     {
         if (IsInstanceValid(this)) // Object could be destroyed during wait
                 Visible = value;
+    }
+    public void Upgrade()
+    {
+        if (upgradeEnumator == null)
+        {
+            return;
+        }
+        upgradeEnumator.MoveNext();
+        if (upgradeEnumator.Current != null)
+        {
+            upgradeEnumator.Current.Invoke();
+        }
+        else
+        {
+            GD.PushWarning($"Tried to upgrade {Name}, no upgrade slots left");
+        }
     }
 }
