@@ -6,6 +6,5 @@ public class Daggers : Ability
     public Daggers()
     {
         Damage = 25;
-        
     }
 }

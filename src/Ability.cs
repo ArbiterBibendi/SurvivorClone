@@ -51,14 +51,14 @@ public class Ability : Node2D
             cancellationTokenSource.Cancel();
         }
         cancellationTokenSource = new CancellationTokenSource();
-        TaskAction();
+        StartAttackLoop();
     }
     public void Disable()
     {
         _enabled = false;
         cancellationTokenSource?.Cancel();
     }
-    private async void TaskAction()
+    private async void StartAttackLoop()
     {
         while (_enabled)
         {
